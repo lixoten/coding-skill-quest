@@ -1,0 +1,8 @@
+/node_modules/
+/Topics/
+*.yaml
+*.idea
+*.py
+requirements.txt
+#public/codemirror.css
+#public/codemirror.js

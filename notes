@@ -1,0 +1,155 @@
+in modern JS, The app/webpage the cycles thru problems for a student to solve.
+These problems are in themselves JS code, in the form of functions that require arguments with the results validated against solutions
+the data/problems come in the form of a json file that contains all problems.. there is no database
+i want this app take take on the form of a game
+keep oop principles in mind, separation of concerns. encapsulation  concepts in mind too
+
+The UI index.html, has 2 elements...
+<div id=editor></div>
+<button id="check-problem-btn">Check</button>
+
+on Check with compare editor code with solution to check it correct.
+
+
+Problem: Encapsulates the details of a single problem, including its content and validation logic.
+    constructor(id, problem, arguments, solution, instructions, hints) {
+    properties
+        id
+        problem
+        arguments
+        solution
+        instructions
+        hints
+    methods .....Please suggest more if you think i am missing some
+        logProblemDetails()... thinks like  console.log(`Problem ID: ${this.id}, ...
+        checkSolution(userSolution), AKA isCorrect()
+        calculateScore(solution) {
+
+
+Player: responsible for tracking the player's score and current problem.
+scoring logic (rules and calculations), including assigning points, penalties, and updating statistics based on the solutions
+provided by the students.
+    Properties
+        totalPoints
+        penalties
+        statistics {}
+            -- correctSolutions
+            -- totalSolutions
+            -- usedHints
+            -- skippedProblems
+            -- peekedSolutions;
+        currentProblem - is the problem....
+    Methods
+        constructor() {
+            this.totalPoints = 0;
+            this.penalties = 0;
+            this.statistics = {correctSolutions: 0, totalSolutions: 0, usedHints: 0, skippedProblems: 0, peekedSolutions: 0};
+            this.currentProblem = null;
+        }
+        setCurrentProblem(problem)
+        getCurrentProblem()
+        addPoints(points),
+        subtractPenalty(penaltyPoints)
+        updateStatistics(correct, usedHint, skippedProblem, peekedSolution) {
+
+UIManager:  Interacts with the DOM to display problems, collect user input, and show feedback, focusing solely on presentation.
+            Handles the user interface interactions, displaying problems, receiving solutions, and providing feedback
+    Properties
+        things like buttons, inputs, display areas
+    Methods:
+      constructor() {
+            // Initialize UI elements here
+        }
+        displayProblem(problem),
+            // Select the target element ... const problemElement = document.getElementById("problem");
+            // Construct the problem string to display ... let problemString = `<p>Problem ID: ${problem.id}</p>`;
+            // Update the content of the target element... problemElement.innerHTML = problemString;
+
+        receiveSolution(solution),
+        showFeedback(feedback).
+        submitAnswer(answer)
+        showScore(score).
+
+Loader Class: Responsible for loading the JSON file containing the problems. It reads the file, parses the JSON, and provides access to the problems.
+    Properties
+        problems array
+    Methods:
+        constructor() {
+            this.problems = [];
+        }
+
+        async loadProblemsFromFile(filePath) // Load and parse the JSON file
+        getProblems() // Return the loaded problems
+
+GameController: Acts as the central controller coordinating between the UIManager, ScoringSystem, and Loader.
+    Properties:
+        reference to the uiManager
+        reference to the player
+        reference to the loader instance.
+        currentProblemIndex
+    Methods:
+        constructor(uiManager, player, loader) {
+            this.uiManager = uiManager;
+            this.player = player;
+            this.loader = loader;
+            this.currentProblemIndex = 0;
+        }
+        startGame()
+
+        assignProblemToPlayer(problem){ this.player.setCurrentProblem(problem); }
+        nextProblem() {
+                this.currentProblemIndex++;
+                if (this.currentProblemIndex < this.loader.getProblems().length) {
+                    this.assignProblemToPlayer(this.loader.getProblems()[this.currentProblemIndex]);
+                    this.uiManager.displayProblem(this.player.getCurrentProblem());
+                } else {
+                    this.endGame();
+                }
+            }
+
+        endGame()
+
+
+Global Variables:
+    gameActive - tracking whether the game is active
+    currentProblemIndex -
+
+
+App.js
+// Assuming you have imported the above classes
+const uiManager = new UIManager();
+const scoringSystem = new ScoringSystem();
+const loader = new Loader();
+
+loader.loadProblemsFromFile('problems.json').then(problems => {
+    const gameController = new GameController(uiManager, scoringSystem, loader);
+    gameController.startGame();
+});
+
+
+    startGame() {
+        this.loader.loadProblems((problems) => {
+            // Assuming problems are sorted or ordered in some way
+            this.currentProblemIndex = 0;
+            this.uiManager.displayProblem(problems[this.currentProblemIndex]);
+        });
+    }
+
+     nextProblem() {
+            this.currentProblemIndex++;
+            if (this.currentProblemIndex < this.problems.length) {
+                this.uiManager.displayProblem(this.problems[this.currentProblemIndex]);
+            } else {
+                this.endGame();
+            }
+        }
+
+
+    endGame() {
+        this.uiManager.showScore(this.scoringSystem.score);
+        // Additional cleanup or end-game logic here
+    }
+
+    // Initialize the App
+    const app = new App();
+    app.startGame();
