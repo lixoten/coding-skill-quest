@@ -5,6 +5,7 @@ import { Loader } from './src/services/Loader.js';
 import { GameController } from './src/controllers/GameController.js';
 import { MessageHandler } from './src/services/MessageHandler.js';
 
+//const INITIAL_DATA_FILE = '../data/js-for-loops-type.json';
 const INITIAL_DATA_FILE = '../data/js-for-loops.json';
 
 const player = new Player();

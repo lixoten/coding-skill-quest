@@ -6,11 +6,9 @@ export class Loader {
         this.problems = [];
 
         this.expectedSolutions = {};
-
-        this.INITIAL_DATA_FILE = 'js-for-loops.json';
     }
 
-    async loadProblemsFromFile(filePath = this.INITIAL_DATA_FILE) {
+    async loadProblemsFromFile(filePath) {
         try {
             const response = await fetch(filePath);
             const data = await response.json();
@@ -35,7 +33,7 @@ export class Loader {
                 }
 
                 // Return the problem without the solution
-                return new Problem(problem.id, problem.problem, problem.arguments, problem.solution, problem.instructions, problem.hints);
+                return new Problem(problem.id, problem.type, problem.problem, problem.arguments, problem.solution, problem.instructions, problem.hints);
             });
             return this.problems;
 
@@ -46,7 +44,7 @@ export class Loader {
     }
 
     getSolutionById(id) {
-        return this.problems[id].problem;
+        return this.problems[id].expectedSolution;
     }
 
     getSolutionFullCodeById(id) {

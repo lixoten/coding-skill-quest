@@ -309,7 +309,7 @@ body {
 /* Set editor dimensions */
 #editor {
     min-height: 300px;
-    width: 50%;
+    width: 80%;
 }
 
 /* Stretch editor to fit inside its containing div */

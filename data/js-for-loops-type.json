@@ -3,14 +3,17 @@
   "data": [
     {
       "id": 1,
+      "type": 1,
       "instructions": [
-        "for..Of Loop - get length of each words. return a number \"array\""
+        "xxxxxfor..Of Loop - get length of each string. return a number \"array\""
       ],
       "hints": [
-        "Hint: for (_____of arr) {",
-        "Hint: The for...of loop is a more modern and concise way to iterate over the elements of an array. It's particularly useful when you don't need to know the index of the current element."
+        "Hint: 1111 for (_____of arr) {",
+        "Hint: 2222 The for...of loop is a more modern and concise way to iterate over the elements of an array. It's particularly useful when you don't need to know the index of the current element.",
+        "hint 33333333333333333333333333333",
+        "hint 4444444444444"
       ],
-      "problem": "function forOfLoop(words) {\r    const outArr = [];\r\n    for (const temp of words) {\r\n        outArr.push(temp.length);\r\n    }\r\n\r\n    return outArr;\r\n}",
+      "problem": "function forOfLoop(arr) {\r    const outArr = [];\r\n    for (const temp of arr) {\r\n        outArr.push(temp.length);\r\n    }\r\n\r\n    return outArr;\r\n}",
       "arguments": [
         "red",
         "orange",
@@ -32,13 +35,14 @@
     },
     {
       "id": 2,
+      "type": 1,
       "instructions": [
-        "Traditional For Loop - add 5 to each number in array. return \"array\" with new values"
+        "For Loop - add 5 to each number in array. return \"array\" with new values"
       ],
       "hints": [
         "Hint: The traditional for loop is useful when you know the exact number of iterations you need to perform. It's straightforward and easy to understand."
       ],
-      "problem": "function forLoop(numbers) {\r    const outArr = [];\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        outArr.push(numbers[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
+      "problem": "function forLoop(arr) {\r    const outArr = [];\r\n    for (let i = 0; i < arr.length; i++) {\r\n        outArr.push(arr[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
       "arguments": [
         1,
         2,
@@ -66,6 +70,7 @@
     },
     {
       "id": 3,
+      "type": 1,
       "instructions": [
         "Sum of Numbers",
         "Use a for loop. Write a JavaScript function that takes an array of numbers as input and returns the sum of all the numbers in the array."
@@ -88,6 +93,7 @@
     },
     {
       "id": 4,
+      "type": 1,
       "instructions": [
         "Finding the Largest Number",
         "Use For loop - Write a JavaScript function that takes an array of numbers as input and returns the largest number in the array."
@@ -110,12 +116,13 @@
     },
     {
       "id": 5,
+      "type": 1,
       "instructions": [
         "Counting Characters",
         "Write a JavaScript function that takes a string as input and returns the count of each character in the string."
       ],
       "hints": [],
-      "problem": "function countCharacters(string) {\r    let charCount = {};\r\n    for (let i = 0; i < string.length; i++) {\r\n        let char = string[i];\r\n        if (charCount[char]) {\r\n            charCount[char]++;\r\n        } else {\r\n            charCount[char] = 1;\r\n        }\r\n    }\r\n    return charCount;\r\n}",
+      "problem": "function countCharacters(str) {\r    let charCount = {};\r\n    for (let i = 0; i < str.length; i++) {\r\n        let char = str[i];\r\n        if (charCount[char]) {\r\n            charCount[char]++;\r\n        } else {\r\n            charCount[char] = 1;\r\n        }\r\n    }\r\n    return charCount;\r\n}",
       "arguments": "hello world",
       "solution": {
         "h": 1,
@@ -130,13 +137,14 @@
     },
     {
       "id": 6,
+      "type": 1,
       "instructions": [
-        "ForEach Loop - change to uppercase each word in array. return a \"array\""
+        "ForEach Loop - change to uppercase each string in array. return a \"array\""
       ],
       "hints": [
         "Hint: The forEach method is a higher-order function provided by JavaScript arrays. It executes a provided function once for each array element. It's a good choice when you want to perform an operation on each element of the array without needing to know the index."
       ],
-      "problem": "function forEachLoop(words) {\r    const outArr = []\r\n    words.forEach(item => {\r\n        outArr.push(item.toUpperCase())\r\n    });\r\n\r\n    return outArr;\r\n}",
+      "problem": "function forEachLoop(arr) {\r    const outArr = []\r\n    arr.forEach(item => {\r\n        outArr.push(item.toUpperCase())\r\n    });\r\n\r\n    return outArr;\r\n}",
       "arguments": [
         "red",
         "orange",
@@ -158,6 +166,7 @@
     },
     {
       "id": 7,
+      "type": 1,
       "instructions": [
         "map Loop - add 10 to each number. return \"array\"",
         "do not use an extra array as a bucket"
@@ -167,7 +176,7 @@
         "Hint: it returns a NEW array -  It's a higher-order function that takes a callback function as an argument and returns a new array.",
         "Hint: The map method creates a new array with the results of calling a provided function on every element in the array. It's useful when you want to transform the elements of an array."
       ],
-      "problem": "function mapLoop(numbers) {\r    return numbers.map(item => {\r\n        return item + 10;\r\n    })\r\n}",
+      "problem": "function mapLoop(arr) {\r    return arr.map(item => {\r\n        return item + 10;\r\n    })\r\n}",
       "arguments": [
         1,
         2,
@@ -195,6 +204,7 @@
     },
     {
       "id": 8,
+      "type": 1,
       "instructions": [
         "filter Loop - get words that start with \"top\". return array",
         "do not use an extra array as a bucket"
@@ -204,7 +214,7 @@
         "Hint: substring(start, end) - end is excluded",
         "Hint: The filter method creates a new array with all elements that pass the test implemented by the provided function. It's useful for filtering out elements based on a condition."
       ],
-      "problem": "function filterLoop(words) {\r    return words.filter(word => word.substring(0,3) === \"top\" );\r\n}",
+      "problem": "function filterLoop(arr) {\r    return arr.filter(word => word.substring(0,3) === \"top\" );\r\n}",
       "arguments": [
         "toper",
         "tophe",
@@ -233,114 +243,16 @@
     },
     {
       "id": 9,
+      "type": 1,
       "instructions": [
-        "filter Loop -  Filter the list of inventors for those who were born in the 1500's"
-      ],
-      "hints": [
-        "Hint: ...kinda like map....",
-        "Hint: The filter method creates a new array with all elements that pass the test implemented by the provided function. It's useful for filtering out elements based on a condition."
-      ],
-      "problem": "function filterLoop(inventors) {\r    return inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1599));\r\n}",
-      "arguments": [
-        {
-          "first": "Albert",
-          "last": "Einstein",
-          "year": 1879,
-          "passed": 1955
-        },
-        {
-          "first": "Isaac",
-          "last": "Newton",
-          "year": 1643,
-          "passed": 1727
-        },
-        {
-          "first": "Galileo",
-          "last": "Galilei",
-          "year": 1564,
-          "passed": 1642
-        },
-        {
-          "first": "Marie",
-          "last": "Curie",
-          "year": 1867,
-          "passed": 1934
-        },
-        {
-          "first": "Johannes",
-          "last": "Kepler",
-          "year": 1571,
-          "passed": 1630
-        },
-        {
-          "first": "Nicolaus",
-          "last": "Copernicus",
-          "year": 1473,
-          "passed": 1543
-        },
-        {
-          "first": "Max",
-          "last": "Planck",
-          "year": 1858,
-          "passed": 1947
-        },
-        {
-          "first": "Katherine",
-          "last": "Blodgett",
-          "year": 1898,
-          "passed": 1979
-        },
-        {
-          "first": "Ada",
-          "last": "Lovelace",
-          "year": 1815,
-          "passed": 1852
-        },
-        {
-          "first": "Sarah E.",
-          "last": "Goode",
-          "year": 1855,
-          "passed": 1905
-        },
-        {
-          "first": "Lise",
-          "last": "Meitner",
-          "year": 1878,
-          "passed": 1968
-        },
-        {
-          "first": "Hanna",
-          "last": "Hammarström",
-          "year": 1829,
-          "passed": 1909
-        }
-      ],
-      "solution": [
-        {
-          "first": "Galileo",
-          "last": "Galilei",
-          "year": 1564,
-          "passed": 1642
-        },
-        {
-          "first": "Johannes",
-          "last": "Kepler",
-          "year": 1571,
-          "passed": 1630
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "instructions": [
-        "reduce Loop - sum all array numbers, but start with 101 in the bucket. return result",
+        "reduce Loop - sum all array items, but start with 101 in the bucket. return result",
         "do not use an extra array as a bucket"
       ],
       "hints": [
         "Hint: syntax: array.reduce(callback( accumulator, currentValue[, index[, array]] )[, initialValue])",
         "Hint: The reduce method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single output value. It's useful for accumulating values or transforming the array into a single value."
       ],
-      "problem": "function reduceLoop(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal, 101);\r\n}",
+      "problem": "function reduceLoop(arr) {\r    return arr.reduce((acc, curVal) => acc + curVal, 101);\r\n}",
       "arguments": [
         1,
         2,
@@ -356,7 +268,8 @@
       "solution": 156
     },
     {
-      "id": 11,
+      "id": 10,
+      "type": 1,
       "instructions": [
         "return the string \"Hello World!\";"
       ],
@@ -366,6 +279,19 @@
       "problem": "function helloWorld() {\r    return \"Hello World!\";\r\n}",
       "arguments": "",
       "solution": "Hello World!"
+    },
+    {
+      "id": 11,
+      "type": 1,
+      "instructions": [
+        "CLI"
+      ],
+      "hints": [
+        "Hint: nothing for ya!!!"
+      ],
+      "problem": "",
+      "arguments": "",
+      "solution": "Client"
     }
   ]
 }

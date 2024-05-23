@@ -1,0 +1,83 @@
+{
+  "name": "Array Problems",
+  "data": [
+    {
+      "id": 1,
+      "instructions": "\nfor..Of Loop - get length of each string. return a number \"array\"\nfor (_____of arr) {\n",
+      "hint": [
+        "for Loop - The traditional for loop is a versatile method that allows you to iterate over an array by index.",
+        "aaaa",
+        "bbbb",
+        "cccccc"],
+      "problem": "function forOfLoop(arr) {\r\n    const outArr = [];\r\n    for (const temp of arr) {\r\n        outArr.push(temp.length);\r\n    }\r\n    return outArr;\r\n}",
+      "arguments": [
+        [
+          "red",
+          "orange",
+          "yellow",
+          "green",
+          "blue",
+          "indigo",
+          "violet"
+        ]
+      ],
+      "solution": [
+        3,
+        6,
+        6,
+        5,
+        4,
+        6,
+        6
+      ]
+    },
+    {
+      "id": 2,
+      "instructions": "For Loop - add 5 to each number in array. return \"array\" with new values",
+      "hint": [],
+      "problem": "function forLoop(arr) {\r\n    const outArr = [];\r\n    for (let i = 0; i < arr.length; i++) {\r\n        outArr.push(arr[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
+      "arguments": [
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      ],
+      "solution": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": 3,
+      "instructions": "",
+      "hint": [],
+      "problem": "function forEachLoop(arr) {\r\n    return 4;\r\n}",
+      "arguments": [],
+      "solution": 4
+    },
+    {
+      "id": 4,
+      "instructions": "",
+      "hint": [],
+      "problem": "function xxx4() {\r\n    return 4;\r\n}",
+      "arguments": [],
+      "solution": 4
+    }
+  ]
+}

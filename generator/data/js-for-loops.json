@@ -33,7 +33,7 @@
     {
       "id": 2,
       "instructions": [
-        "Traditional For Loop - add 5 to each number in array. return \"array\" with new values"
+        "For Loop - add 5 to each number in array. return \"array\" with new values"
       ],
       "hints": [
         "Hint: The traditional for loop is useful when you know the exact number of iterations you need to perform. It's straightforward and easy to understand."

@@ -1,4 +1,31 @@
+Next-Step?
+Change app to use class instead of id=editor.
+
+
+======================================================
+How to handle multiple types of editors?
+
+Editor - multi Checkbox - select multiple that apply
+Editor - multi choice - select correct one
+Editor - Regular question text answer input
+Editor - codemirror6
+
+Maybe use a class name instead of an id=editor
+
+So for "Editor - Regular question"
+????????????????
+
+
+But the codemirror still gets initialized..
+-- Do we care? in init null if not found, so on null return?
+
+
+
+
+
+==================================
 in modern JS, The app/webpage the cycles thru problems for a student to solve.
+
 These problems are in themselves JS code, in the form of functions that require arguments with the results validated against solutions
 the data/problems come in the form of a json file that contains all problems.. there is no database
 i want this app take take on the form of a game

@@ -108,12 +108,14 @@ export class UIManager {
 
         this.presentInstructions(problem.instructions, 22);
         this.presentHintLabelTip(index, problem.hints.length + 1)
-        this.presentProblemCode(problem.problem);
+        this.presentProblemCode(problem.type, problem.problem);
     }
 
     presentComparedSolution(userSolution, expectedSolution) {
-        this.userSolutionElement.textContent = userSolution;
-        this.expectedSolutionElement.textContent = expectedSolution;
+        //var userSolutionString = JSON.stringify(userSolution);
+
+        this.userSolutionElement.textContent = JSON.stringify(userSolution);
+        this.expectedSolutionElement.textContent = JSON.stringify(expectedSolution);
     }
 
     clearComparedSolution() {
@@ -126,7 +128,19 @@ export class UIManager {
         this.messageElement.style.color = "none"
     }
 
-    presentProblemCode(code) {
+    presentProblemCode(type, code) {
+        if (type === 1) {
+            this.problemJS(code);
+            //this.problemQuestion(code);
+        } else {
+            this.problemJS(code);
+        }
+    }
+    problemQuestion(code) {
+
+    }
+
+    problemJS(code) {
         const functionDeclaration = code.match(/function\s+[^(]*\([^)]*\)/)[0]; // Extract the function declaration
         let emptyFunction = functionDeclaration + ' {\n';
         emptyFunction += `\n}`;
@@ -134,6 +148,7 @@ export class UIManager {
         const newState = cm6.createEditorState(emptyFunction);
         this.view.setState(newState);
     }
+
 
     presentInstructions(text, id) {
         this.idElement.innerHTML = id + ')';
@@ -208,9 +223,13 @@ export class UIManager {
         // Basically the first hint is always the input arguments and solution result. AKA expected value
         if (idx < 0) {
             const args = this.gameController.loader.getArgsById(this.currentProblemIndex);
+            const stringifyArgs = JSON.stringify(args);
+
             const solution = this.gameController.loader.getSolutionById(this.currentProblemIndex);
-            this.hintLine.innerHTML = `<p>${idx + 2}) Input: ` + args + "<br />" +
-                "Expected output: " + solution + "</p>";
+            const stringifySolution = JSON.stringify(solution);
+
+            this.hintLine.innerHTML = `<p>${idx + 2}) Input: ` + stringifyArgs + "<br />" +
+                "---Expected output: " + stringifySolution + "</p>";
         } else {
             const temp  = this.gameController.loader.getHintsById(this.currentProblemIndex, idx);
             this.hintLine.innerHTML += `<p>${idx + 2}) ${temp}</p>`;
@@ -351,6 +370,8 @@ export class UIManager {
 
             const expectedSolution = this.gameController.getCurrentProblemExpectedSolutionFromPlayer();
             this.presentComparedSolution(userSolution, expectedSolution);
+            //console.log(userSolution);
+            //console.log(expectedSolution);
 
             if (isCorrect) {
                 console.log('Correct solution!');

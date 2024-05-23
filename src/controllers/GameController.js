@@ -41,6 +41,9 @@ export class GameController {
         this.player = player;
         this.loader = loader;
         this.currentProblemIndex = 0;
+
+        // This file is used if no file is passed in
+        this.DEFAULT_INITIAL_DATA_FILE = 'js-for-loops.json';
     }
 
     restartGame() {
@@ -57,7 +60,7 @@ export class GameController {
         return this.totalProblems === (solved + skipped);
     }
 
-    startGame(file) {
+    startGame(file = this.DEFAULT_INITIAL_DATA_FILE) {
         this.loader.loadProblemsFromFile(file)
             .then(problems => {
                 this.currentProblemIndex = 0;
