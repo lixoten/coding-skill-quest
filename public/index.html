@@ -19,6 +19,7 @@
         <nav>
             <button id="restart-game-btn" style="height: 100%">Restart</button>
             <button id="change-problem-set-btn" style="height: 100%">Change Problem Set</button>
+            <button id="problem-set-apply-btn">Apply</button>
         </nav>
         <div id="problem-set-name"></div>
         <div>Total Problems: <span id="total-problems">0</span></div>
@@ -32,7 +33,8 @@
     </section>
 
     <section id="instructions-box">
-        <div id="id">00</div>
+        <div id="name-head"><span id="id">00</span> <span id="name">name</span></div>
+
         <div id="instructions">instructions</div>
     </section>
 
@@ -44,13 +46,15 @@
     <section id="editor-container">
 <!--            <div id="editor"></div>-->
         <!--        <textarea id="editor" rows="10" cols="150"></textarea>-->
-        <div id="editor"></div><br>
-        <input type="checkbox" id="oneDark" name="oneDark" onchange="changeTheme()">
+        <div id="editor"></div>
+        <textarea id="editorText">cccccccccccc</textarea>
+
 
         <button id="skip-problem-btn">Skip</button>
         <button id="reset-problem-btn">Reset Problem</button>
         <!--        <button id="show-overlay-btn">Show Overlay</button>-->
     </section>
+    <input type="checkbox" id="oneDark" name="oneDark" onchange="changeTheme()">
 
     <div class="solution"><span>Your Solution:</span><span id="user-solution"></span></div>
     <div class="solution"><span>Expected:</span><span id="expected-solution"></span></div>

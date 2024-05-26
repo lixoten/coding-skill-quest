@@ -7,7 +7,8 @@ export class UIManager {
         // Initialize UI elements dynamically
         // Screen buttons
         this.restartGameBtn = document.getElementById('restart-game-btn');
-        //Todo this.changeProblemSetBtn = document.getElementById('change-problem-set-btn');
+        // Todo this.changeProblemSetBtn = document.getElementById('change-problem-set-btn');
+        this.problemSetApplyBtn = document.getElementById('problem-set-apply-btn');
         this.resetProblemBtn = document.getElementById('reset-problem-btn');
         this.skipBtn = document.getElementById('skip-problem-btn');
         this.showHintBtn = document.getElementById('show-hint-btn');
@@ -30,6 +31,7 @@ export class UIManager {
         this.hintLine = document.getElementById('hint-code');
 
         // Screen Elements
+        this.nameElement = document.getElementById('name');
         this.idElement = document.getElementById('id');
         this.instructionsElement = document.getElementById('instructions');
         this.userSolutionElement = document.getElementById('user-solution');
@@ -43,6 +45,7 @@ export class UIManager {
         this.overlayDialog = document.getElementById('overlay-dialog');
 
         this.currentProblemIndex = 0;
+        this.currentProblemType = 0;
         this.totalHints = 0;
         this.hintIndex = -1;
 
@@ -75,9 +78,10 @@ export class UIManager {
         }, 300); // Adjust the delay as needed
 
         this.resetProblemBtn.addEventListener('click', () => this.handleResetProblemClick());
+        this.problemSetApplyBtn.addEventListener('click', () => this.handleProblemSetApplyClick());
 
         this.skipBtn.addEventListener('click', () => this.handleSkipButtonClick());
-        this.checkButton.addEventListener('click', () => this.handleCheckButtonClick());
+        this.checkButton.addEventListener('click', () => this.handleCheckButtonClick(this.currentProblemType));
         this.showHintBtn.addEventListener('click', () => this.handleShowHintButtonClick(this.hintIndex++));
         this.showSolutionBtn.addEventListener('click', () => this.handleShowSolutionButtonClick());
         this.copyButton.addEventListener('click', this.copyTextToClipboard);
@@ -88,32 +92,91 @@ export class UIManager {
 
     handleResetProblemClick() {
         const solutionDisplayCode = this.gameController.loader.getSolutionFullCodeById(this.currentProblemIndex);
-        this.presentProblemCode(solutionDisplayCode);
+        this.presentProblemCode(1, solutionDisplayCode);//typewth
     }
+
+    async handleProblemSetApplyClick() {
+        const problemSetDropdown = document.getElementById('problem-set-dp');
+        const selectedOptionValue = problemSetDropdown.options[problemSetDropdown.selectedIndex].value;
+        //selectedOptionValue.selected = true;
+
+//        alert(selectedOptionValue);
+        //this.problemSetDropdown.va
+        const foo = `../data/js-${selectedOptionValue}.json`;
+
+        //restart
+        await this.gameController.justLoadProblems(foo);
+        //this.restartGameUi();
+        this.gameController.restartGame();
+    }
+    // this.gameController.startGame(foo)
+
 
     displayHeaderFields() {
         this.totalProblemsElement.textContent = this.gameController.getTotalProblems();
         this.goalScoreElement.textContent = this.gameController.getGoalScore();
         this.problemSetName.textContent = this.gameController.getProblemSetName();
     }
+    displayDropdown() {
+        const problemSetDropdown = document.createElement('select');
+        problemSetDropdown.id = "problem-set-dp";
+        // this.problemSetDropdown = document.getElementById('problem-set-dp');
+
+        const opt1 = document.createElement('option');
+        opt1.textContent = "Filter Problems";
+        opt1.value = "filters";
+        const opt2 = document.createElement('option');
+        opt2.textContent = "For-loops Problems";
+        opt2.value = "for-loops";
+        const opt3 = document.createElement('option');
+        opt3.textContent = "Misc Problems";
+        opt3.value = "misc";
+        ///opt1.appendChild(this.problemSetDropdown);
+        problemSetDropdown.appendChild(opt1)
+        problemSetDropdown.appendChild(opt2)
+        problemSetDropdown.appendChild(opt3)
+
+        opt3.selected = true;
+
+
+        // Get the parent element
+        const parentElement = document.getElementById('change-problem-set-btn');
+        parentElement.insertAdjacentElement('afterend', problemSetDropdown);
+
+
+    }
+
 
     displayProblem(problem, index) {
         this.currentProblemIndex = index;
         this.clearFullSolution();
-        this.clearHints(problem.hints.length);
+        this.clearHints(problem.prob_hints.length);
         this.clearComparedSolution()
         this.clearDisplayMessage()
-        if (this.nextButton)
+        if (this.nextButton) {
             this.nextButton.remove();
+            //this.nextButton.remove();
+            //this.nextButton = null;
+        }
 
-        this.presentInstructions(problem.instructions, 22);
-        this.presentHintLabelTip(index, problem.hints.length + 1)
-        this.presentProblemCode(problem.problem);
+        this.currentProblemType = problem.prob_type;
+
+        this.presentProblemName(problem.prob_name);
+
+
+        this.presentInstructions(problem.prob_instructions, 22);
+        this.presentHintLabelTip(0, problem.prob_hints.length + 1)
+        this.presentProblemCode(problem.prob_type, problem.prob_problem);
     }
 
     presentComparedSolution(userSolution, expectedSolution) {
-        this.userSolutionElement.textContent = userSolution;
-        this.expectedSolutionElement.textContent = expectedSolution;
+        //var userSolutionString = JSON.stringify(userSolution);
+
+        // numerics ok is turned to string
+        this.userSolutionElement.textContent = JSON.stringify(userSolution);
+        this.expectedSolutionElement.textContent = JSON.stringify(expectedSolution);
+        //................this.userSolutionElement.textContent = userSolution;
+        //................this.expectedSolutionElement.textContent = expectedSolution;
     }
 
     clearComparedSolution() {
@@ -126,14 +189,49 @@ export class UIManager {
         this.messageElement.style.color = "none"
     }
 
-    presentProblemCode(code) {
+    presentProblemCode(typewth, code) {
+        const editor = document.getElementById('editor');
+        const otherEditor = document.getElementById('editorText');
+        if (typewth === 1) {
+            editor.style.display = "block"
+            otherEditor.style.display = "none"
+            this.problemJS(code);
+            //this.problemQuestion(code);
+        } else {
+            editor.style.display = "none"
+            otherEditor.style.display = "block"
+            this.problemQuestion(typewth);
+        }
+    }
+    problemQuestion(code) {
+        const editorContainer = document.getElementById('editorText');
+        editorContainer.textContent = code;
+    }
+
+    problemJS(code) {
         const functionDeclaration = code.match(/function\s+[^(]*\([^)]*\)/)[0]; // Extract the function declaration
         let emptyFunction = functionDeclaration + ' {\n';
         emptyFunction += `\n}`;
 
-        const newState = cm6.createEditorState(emptyFunction);
+        const options = {
+            theme: "default",
+            extensions: [
+                // Exclude autocomplete-related extensions
+                // For example, if you're using a language-specific extension that includes autocomplete:
+                // removeLanguageAutocompleteExtension()
+            ]
+        };
+
+        const newState = cm6.createEditorState(emptyFunction, options);
         this.view.setState(newState);
+
     }
+
+
+    presentProblemName(name) {
+        this.nameElement.innerHTML = name;
+    }
+
 
     presentInstructions(text, id) {
         this.idElement.innerHTML = id + ')';
@@ -208,9 +306,13 @@ export class UIManager {
         // Basically the first hint is always the input arguments and solution result. AKA expected value
         if (idx < 0) {
             const args = this.gameController.loader.getArgsById(this.currentProblemIndex);
+            const stringifyArgs = JSON.stringify(args);
+
             const solution = this.gameController.loader.getSolutionById(this.currentProblemIndex);
-            this.hintLine.innerHTML = `<p>${idx + 2}) Input: ` + args + "<br />" +
-                "Expected output: " + solution + "</p>";
+            const stringifySolution = JSON.stringify(solution);
+
+            this.hintLine.innerHTML = `<p>${idx + 2}) Input: ` + stringifyArgs + "<br />" +
+                "---Expected output: " + stringifySolution + "</p>";
         } else {
             const temp  = this.gameController.loader.getHintsById(this.currentProblemIndex, idx);
             this.hintLine.innerHTML += `<p>${idx + 2}) ${temp}</p>`;
@@ -327,20 +429,31 @@ export class UIManager {
         this.gameController.nextProblem();
     }
 
-    handleCheckButtonClick() {
-        const problemArguments = this.gameController.loader.getArgsById(this.currentProblemIndex);
+    handleCheckButtonClick(typewth) {
+        let isExecutable = false;
+        let userSolution = "";
 
-        //const problem = this.getUserSolutionFromUi(); // Implement this method to capture the user's solution
-        const editorState = this.view.state;
-        const problem = editorState.doc.toString();
+        if (typewth === 2) {
+            isExecutable = true;
+            const editorText = document.getElementById('editorText');
+            userSolution = editorText.value;
 
-        let [isExecutable, userSolution] = this.submitCode(problem, problemArguments);
+        } else {
+            const problemArguments = this.gameController.loader.getArgsById(this.currentProblemIndex);
 
-        // For typeof objects that are not arrays as in...  equals { } we JSON.stringify()
-        // below when it gets checkSolutionCorrectness()... it will be treated as a string
-        if (typeof userSolution === 'object' && !Array.isArray(userSolution)) {
-            userSolution = JSON.stringify(userSolution);
+            //const problem = this.getUserSolutionFromUi(); // Implement this method to capture the user's solution
+            const editorState = this.view.state;
+            const problem = editorState.doc.toString();
+
+            [isExecutable, userSolution] = this.submitCode(problem, problemArguments);
+
+            // For typeof objects that are not arrays as in...  equals { } we JSON.stringify()
+            // below when it gets checkSolutionCorrectness()... it will be treated as a string
+            //if (typeof userSolution === 'object' && !Array.isArray(userSolution)) {
+            //    userSolution = JSON.stringify(userSolution);
+            //}
         }
+
 
         let isCorrect = false;
         if (!isExecutable) {
@@ -351,6 +464,8 @@ export class UIManager {
 
             const expectedSolution = this.gameController.getCurrentProblemExpectedSolutionFromPlayer();
             this.presentComparedSolution(userSolution, expectedSolution);
+            //console.log(userSolution);
+            //console.log(expectedSolution);
 
             if (isCorrect) {
                 console.log('Correct solution!');
@@ -371,6 +486,8 @@ export class UIManager {
                     this.nextButton.textContent = 'Next';
                     this.nextButton.id = 'next-btn';
                     this.nextButton.addEventListener('click', () => this.handleNextButtonClick());
+                    this.checkButton.insertAdjacentElement('afterend', this.nextButton);
+                } else {
                     this.checkButton.insertAdjacentElement('afterend', this.nextButton);
                 }
 
@@ -476,4 +593,4 @@ export class UIManager {
         }
     }
 }
-//562 - 478
+//562 - 478 - 585

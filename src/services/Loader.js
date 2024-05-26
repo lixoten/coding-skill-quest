@@ -6,11 +6,9 @@ export class Loader {
         this.problems = [];
 
         this.expectedSolutions = {};
-
-        this.INITIAL_DATA_FILE = 'js-for-loops.json';
     }
 
-    async loadProblemsFromFile(filePath = this.INITIAL_DATA_FILE) {
+    async loadProblemsFromFile(filePath) {
         try {
             const response = await fetch(filePath);
             const data = await response.json();
@@ -25,17 +23,19 @@ export class Loader {
             //return this.problems; // Ensure to return the problems
             this.problems = problemsJson.map(problem => {
                 // Store the solution separately
-                this.expectedSolutions[problem.id] = problem.expectedSolutions;
-
-                if (typeof problem.expectedSolutions === 'object' && !Array.isArray(problem.expectedSolutions)) {
-                    //console.log(1111);
-                    console.log(problem.expectedSolutions);
-                    problem.expectedSolutions = JSON.stringify(problem.expectedSolutions);
-                    console.log(problem.expectedSolutions);
-                }
+                // why? this.expectedSolutions[problem.prob_id] = problem.prob_solution;
 
                 // Return the problem without the solution
-                return new Problem(problem.id, problem.problem, problem.arguments, problem.solution, problem.instructions, problem.hints);
+                return new Problem(
+                    problem.prob_id,
+                    problem.prob_type,
+                    problem.prob_name,
+                    problem.prob_problem,
+                    problem.prob_args,
+                    problem.prob_solution,
+                    problem.prob_resultType,
+                    problem.prob_instructions,
+                    problem.prob_hints);
             });
             return this.problems;
 
@@ -46,22 +46,22 @@ export class Loader {
     }
 
     getSolutionById(id) {
-        return this.problems[id].problem;
+        return this.problems[id].prob_solution;
     }
 
     getSolutionFullCodeById(id) {
-        return this.problems[id].problem;
+        return this.problems[id].prob_problem;
     }
 
     getProblemArgumentsById(id) {
-        return this.problems[id].args;
+        return this.problems[id].prob_args;
     }
 
     getHintsById(id, hintId) {
-        return this.problems[id].hints[hintId];
+        return this.problems[id].prob_hints[hintId];
     }
     getArgsById(id) {
-        return this.problems[id].args;
+        return this.problems[id].prob_args;
     }
 
     getProblems() {
@@ -77,7 +77,7 @@ export class Loader {
     }
 
     getProblemById(id) {
-        return this.problems.find(problem => problem.id === id);
+        return this.problems.find(problem => problem.prob_id === id);
     }
 
     // getRandomProblem() {

@@ -31,7 +31,7 @@ export class Player {
         return this.currentProblem;
     }
     getCurrentProblemExpectedSolution_Player() {
-        return this.currentProblem.expectedSolution;
+        return this.currentProblem.prob_solution;
     }
 
     getScore_Players() {

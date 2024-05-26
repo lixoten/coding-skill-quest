@@ -6,3 +6,6 @@
 requirements.txt
 #public/codemirror.css
 #public/codemirror.js
+/playarea/
+/generator/datahold/
+/generator/data/

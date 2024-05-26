@@ -1,0 +1,73 @@
+{
+  "name": "2024-5-25-19-17-7-JavaScript for misc",
+  "data": [
+    {
+      "prob_id": 1,
+      "prob_type": 1,
+      "prob_name": "misc-----Just a word!!",
+      "prob_problem": "function justReturnTheWord(word) {\r    return word;\r\n}",
+      "prob_args": "Hi",
+      "prob_solution": "Hi",
+      "prob_resultType": "string",
+      "prob_instructions": [
+        "return the word"
+      ],
+      "prob_hints": [
+        "There is no need to know what the word is. just return it knucklehead"
+      ]
+    },
+    {
+      "prob_id": 2,
+      "prob_type": 2,
+      "prob_name": "CLI",
+      "prob_problem": "function xxxxx(xx) {\r    return xx;\r\n}",
+      "prob_args": "",
+      "prob_solution": "client line interface",
+      "prob_resultType": "word",
+      "prob_instructions": [
+        "What is CLI?"
+      ],
+      "prob_hints": [
+        "Text based..."
+      ]
+    },
+    {
+      "prob_id": 3,
+      "prob_type": 2,
+      "prob_name": "yellow red blue, blue red yellow",
+      "prob_problem": "function xxxxx(xx) {\r    return xx;\r\n}",
+      "prob_args": "",
+      "prob_solution": [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "indigo"
+      ],
+      "prob_resultType": "wordInList",
+      "prob_instructions": [
+        "return the word in the string zfsdfsdf"
+      ],
+      "prob_hints": [
+        "There is ????"
+      ]
+    },
+    {
+      "prob_id": 4,
+      "prob_type": 1,
+      "prob_name": "Hello World!",
+      "prob_problem": "function returnHelloWorld() {\r    return \"Hello World!\";\r\n}",
+      "prob_args": "",
+      "prob_solution": "Hello World!",
+      "prob_resultType": "string",
+      "prob_instructions": [
+        "Returns the string \"Hello World!\"."
+      ],
+      "prob_hints": [
+        "REALLLY? do you reallyy need a hint? WTH!!!!"
+      ]
+    }
+  ]
+}

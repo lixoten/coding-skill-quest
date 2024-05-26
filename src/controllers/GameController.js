@@ -38,9 +38,16 @@ export class GameController {
         //    throw new Error('uiManager must be an instance of UIManager');
         //}
         this.uiManager = uiManager;
+
+        /*
+         * @ ccccPlayer
+         */
         this.player = player;
         this.loader = loader;
         this.currentProblemIndex = 0;
+
+        // This file is used if no file is passed in
+        this.DEFAULT_INITIAL_DATA_FILE = 'js-for-loops.json';
     }
 
     restartGame() {
@@ -57,7 +64,24 @@ export class GameController {
         return this.totalProblems === (solved + skipped);
     }
 
-    startGame(file) {
+
+    justLoadProblems(file = this.DEFAULT_INITIAL_DATA_FILE) {
+        return new Promise((resolve, reject) => {
+            this.loader.loadProblemsFromFile(file)
+                .then(problems => {
+                    this.currentProblemIndex = 0;
+                    this.totalProblems = problems.length;
+                    this.assignProblemToPlayer(problems[this.currentProblemIndex]);
+                    resolve(); // Resolve the promise
+                })
+                .catch(error => {
+                    reject(error); // Reject the promise if there's an error
+                });
+        });
+    }
+
+
+    startGame(file = this.DEFAULT_INITIAL_DATA_FILE) {
         this.loader.loadProblemsFromFile(file)
             .then(problems => {
                 this.currentProblemIndex = 0;
@@ -67,6 +91,7 @@ export class GameController {
                 this.assignProblemToPlayer(problems[this.currentProblemIndex]);
                 this.uiManager.displayProblem(problems[this.currentProblemIndex], this.currentProblemIndex);
                 this.uiManager.displayHeaderFields(); // Display the total number of problems after they have been loaded
+                this.uiManager.displayDropdown(); // Display the total number of problems after they have been loaded
                 console.log(123);
             });
     }
@@ -230,7 +255,15 @@ export class GameController {
         // const currentProblemObj = this.getCurrentProblemFromPlayer();
         // const isCorrect = currentProblemObj.checkSolution(userSolution);
 
-        const isCorrect = this.getCurrentProblemFromPlayer().checkSolution(userSolution);
+        //const isCorrect = this.getCurrentProblemFromPlayer().checkSolution(userSolution);
+
+        // Step 1: Retrieve the current problem from the player
+        const currentPlayerProblemObject = this.getCurrentProblemFromPlayer();
+
+// Step 2: Check the solution against the current problem
+        const isCorrect = currentPlayerProblemObject.checkSolution(userSolution);
+
+
         return isCorrect;
     }
 
