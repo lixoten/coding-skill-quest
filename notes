@@ -1,6 +1,12 @@
 Next-Step?
 Change app to use class instead of id=editor.
 
+typewth is for problem type... Why "WTH", to be easy to find n source
+
+
+typewth 1 | editor >>>> codemirror6
+typewth 2 | editorText >>>> is for regular text question / response
+
 
 ======================================================
 How to handle multiple types of editors?

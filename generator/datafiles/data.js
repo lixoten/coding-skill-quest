@@ -1,3 +1,6 @@
+const words     = ['toper', 'tophe', 'tophs', 'tuesday', 'topis', 'toped', 'tree', 'topes', 'tophi', 'togo', 'topic', 'topoi'];
+const colors    = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+const myNumbers= [1, 2, 3, 4, 5, 6, 7,8 ,9, 10];
 const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
     { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
@@ -12,24 +15,9 @@ const inventors = [
     { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
     { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
 ];
-const words     = ['toper', 'tophe', 'tophs', 'tuesday', 'topis', 'toped', 'tree', 'topes', 'tophi', 'togo', 'topic', 'topoi'];
 
+let fooArr  = [];
+let argsArr = [];
+let j= -1; // important! Do not change
 
-function filterLoop(inventors) {
-    return inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1599));
-}
-
-function filterLoop2(words) {
-    return words.filter(word => word.substring(0,3) === "top" );
-}
-
-
-const xxx = filterLoop(inventors);
-console.table(xxx);
-
-//console.table(filterLoop);
-const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1599));
-console.table(fifteen);
-
-
-console(1);
+module.exports = { fooArr, argsArr, j, words, colors, myNumbers, inventors };

@@ -1,5 +1,5 @@
 {
-  "name": "2024-5-25-17-37-42-JavaScript for loops",
+  "name": "zzJavaScript for loops",
   "data": [
     {
       "prob_id": 1,
@@ -424,110 +424,6 @@
     {
       "prob_id": 13,
       "prob_type": 1,
-      "prob_name": "Get All Inventors Full names",
-      "prob_problem": "function getInventorsFullname(inventors) {\r    return inventors.map((inventor) => `${inventor.first} ${inventor.last}`);\r\n}",
-      "prob_args": [
-        {
-          "first": "Albert",
-          "last": "Einstein",
-          "year": 1879,
-          "passed": 1955
-        },
-        {
-          "first": "Isaac",
-          "last": "Newton",
-          "year": 1643,
-          "passed": 1727
-        },
-        {
-          "first": "Galileo",
-          "last": "Galilei",
-          "year": 1564,
-          "passed": 1642
-        },
-        {
-          "first": "Marie",
-          "last": "Curie",
-          "year": 1867,
-          "passed": 1934
-        },
-        {
-          "first": "Johannes",
-          "last": "Kepler",
-          "year": 1571,
-          "passed": 1630
-        },
-        {
-          "first": "Nicolaus",
-          "last": "Copernicus",
-          "year": 1473,
-          "passed": 1543
-        },
-        {
-          "first": "Max",
-          "last": "Planck",
-          "year": 1858,
-          "passed": 1947
-        },
-        {
-          "first": "Katherine",
-          "last": "Blodgett",
-          "year": 1898,
-          "passed": 1979
-        },
-        {
-          "first": "Ada",
-          "last": "Lovelace",
-          "year": 1815,
-          "passed": 1852
-        },
-        {
-          "first": "Sarah E.",
-          "last": "Goode",
-          "year": 1855,
-          "passed": 1905
-        },
-        {
-          "first": "Lise",
-          "last": "Meitner",
-          "year": 1878,
-          "passed": 1968
-        },
-        {
-          "first": "Hanna",
-          "last": "Hammarström",
-          "year": 1829,
-          "passed": 1909
-        }
-      ],
-      "prob_solution": [
-        "Albert Einstein",
-        "Isaac Newton",
-        "Galileo Galilei",
-        "Marie Curie",
-        "Johannes Kepler",
-        "Nicolaus Copernicus",
-        "Max Planck",
-        "Katherine Blodgett",
-        "Ada Lovelace",
-        "Sarah E. Goode",
-        "Lise Meitner",
-        "Hanna Hammarström"
-      ],
-      "prob_resultType": "array",
-      "prob_instructions": [
-        "filter Loop - Maps over an array of inventor objects and returns a new array containing full names of the inventors.",
-        "Each inventor object is expected to have `first` and `last` properties representing the inventor's first and last names.",
-        "return: A new array of strings, where each string is the full name of an inventor."
-      ],
-      "prob_hints": [
-        "Syntax: array.map(callback(currentValue[, index[, array]])[, thisArg])",
-        "Concat with + \" \" + or use backticks '"
-      ]
-    },
-    {
-      "prob_id": 14,
-      "prob_type": 1,
       "prob_name": "Reduce Method",
       "prob_problem": "function reduceLoop(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal, 101);\r\n}",
       "prob_args": [
@@ -555,7 +451,7 @@
       ]
     },
     {
-      "prob_id": 15,
+      "prob_id": 14,
       "prob_type": 1,
       "prob_name": "Get even",
       "prob_problem": "function getEvenNumbers(numbers) {\r    return numbers.filter((num) => num % 2 === 0);\r\n}",
@@ -588,7 +484,7 @@
       ]
     },
     {
-      "prob_id": 16,
+      "prob_id": 15,
       "prob_type": 1,
       "prob_name": "Triple Numbers",
       "prob_problem": "function tripleNumbers(numbers) {\r    return numbers.map((num) => num * 3);\r\n}",
@@ -626,7 +522,7 @@
       ]
     },
     {
-      "prob_id": 17,
+      "prob_id": 16,
       "prob_type": 1,
       "prob_name": "Sum Numbers",
       "prob_problem": "function sumNumbers(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal);\r\n\r\n}",
@@ -654,7 +550,7 @@
       ]
     },
     {
-      "prob_id": 18,
+      "prob_id": 17,
       "prob_type": 1,
       "prob_name": "Get Even-Triple-Sum Numbers",
       "prob_problem": "function sumOfTripledEvens(numbers) {\r    const evens = numbers.filter((num) => num % 2 === 0);\r\n    const trippled = evens.map((num) => num * 3);\r\n    const sum = trippled.reduce((acc, curVal) => acc + curVal);\r\n    return sum;\r\n}",
@@ -684,7 +580,7 @@
       ]
     },
     {
-      "prob_id": 19,
+      "prob_id": 18,
       "prob_type": 1,
       "prob_name": "Hello World!",
       "prob_problem": "function returnHelloWorld() {\r    return \"Hello World!\";\r\n}",

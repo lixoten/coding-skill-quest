@@ -2,8 +2,21 @@
   "name": "JavaScript for loops",
   "data": [
     {
+      "id": 11,
+      "typewth": 2,
+      "instructions": [
+        "CLI"
+      ],
+      "hints": [
+        "Hint: nothing for ya!!!"
+      ],
+      "problem": "",
+      "arguments": "",
+      "solution": "Client"
+    },
+    {
       "id": 1,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "xxxxxfor..Of Loop - get length of each string. return a number \"array\""
       ],
@@ -35,7 +48,7 @@
     },
     {
       "id": 2,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "For Loop - add 5 to each number in array. return \"array\" with new values"
       ],
@@ -70,7 +83,7 @@
     },
     {
       "id": 3,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "Sum of Numbers",
         "Use a for loop. Write a JavaScript function that takes an array of numbers as input and returns the sum of all the numbers in the array."
@@ -93,7 +106,7 @@
     },
     {
       "id": 4,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "Finding the Largest Number",
         "Use For loop - Write a JavaScript function that takes an array of numbers as input and returns the largest number in the array."
@@ -116,7 +129,7 @@
     },
     {
       "id": 5,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "Counting Characters",
         "Write a JavaScript function that takes a string as input and returns the count of each character in the string."
@@ -137,7 +150,7 @@
     },
     {
       "id": 6,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "ForEach Loop - change to uppercase each string in array. return a \"array\""
       ],
@@ -166,7 +179,7 @@
     },
     {
       "id": 7,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "map Loop - add 10 to each number. return \"array\"",
         "do not use an extra array as a bucket"
@@ -204,7 +217,7 @@
     },
     {
       "id": 8,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "filter Loop - get words that start with \"top\". return array",
         "do not use an extra array as a bucket"
@@ -243,7 +256,7 @@
     },
     {
       "id": 9,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "reduce Loop - sum all array items, but start with 101 in the bucket. return result",
         "do not use an extra array as a bucket"
@@ -269,7 +282,7 @@
     },
     {
       "id": 10,
-      "type": 1,
+      "typewth": 1,
       "instructions": [
         "return the string \"Hello World!\";"
       ],
@@ -279,19 +292,6 @@
       "problem": "function helloWorld() {\r    return \"Hello World!\";\r\n}",
       "arguments": "",
       "solution": "Hello World!"
-    },
-    {
-      "id": 11,
-      "type": 1,
-      "instructions": [
-        "CLI"
-      ],
-      "hints": [
-        "Hint: nothing for ya!!!"
-      ],
-      "problem": "",
-      "arguments": "",
-      "solution": "Client"
     }
   ]
 }
