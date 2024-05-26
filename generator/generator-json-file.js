@@ -1,5 +1,6 @@
 // generator-json-file.js
-// generator-json-file filters
+// node generator-json-file.js filters
+// node generator-json-file.js filters
 const fs = require('fs');
 
 const readline = require('readline');
@@ -25,11 +26,13 @@ async function main() {
         DATASET_NAME = 'for-loops';
     } else if (fileName === "filters"){
         DATASET_NAME = 'filters';
+    } else if (fileName === "misc"){
+        DATASET_NAME = 'misc';
     } else{
         DATASET_NAME = 'for-loops';
     }
 
-    const OUTPUT_JSON_FILE = "../data/js-" + DATASET_NAME + ".json";
+    const OUTPUT_JSON_FILE = "../generator/data/js-" + DATASET_NAME + ".json";
     const INPUT_DATA_FILE = "input-" + DATASET_NAME + ".js";
 
     // ... rest of your code ...
@@ -119,6 +122,8 @@ async function main() {
         if (err) {
             console.log("Danger danger will robinson!!!")
             throw err;
+        } else {
+            console.log("Written!!!: " + OUTPUT_JSON_FILE)
         }
     });
 

@@ -7,8 +7,7 @@ export class UIManager {
         // Initialize UI elements dynamically
         // Screen buttons
         this.restartGameBtn = document.getElementById('restart-game-btn');
-        //Todo this.changeProblemSetBtn = document.getElementById('change-problem-set-btn');
-        this.problemSetDropdown = document.getElementById('problem-set-dp');
+        // Todo this.changeProblemSetBtn = document.getElementById('change-problem-set-btn');
         this.problemSetApplyBtn = document.getElementById('problem-set-apply-btn');
         this.resetProblemBtn = document.getElementById('reset-problem-btn');
         this.skipBtn = document.getElementById('skip-problem-btn');
@@ -96,19 +95,21 @@ export class UIManager {
         this.presentProblemCode(1, solutionDisplayCode);//typewth
     }
 
-    handleProblemSetApplyClick() {
-        const selectedOptionValue = this.problemSetDropdown.options[this.problemSetDropdown.selectedIndex].value;
+    async handleProblemSetApplyClick() {
+        const problemSetDropdown = document.getElementById('problem-set-dp');
+        const selectedOptionValue = problemSetDropdown.options[problemSetDropdown.selectedIndex].value;
+        //selectedOptionValue.selected = true;
 
-
-        alert(selectedOptionValue);
+//        alert(selectedOptionValue);
         //this.problemSetDropdown.va
-        const foo = '../data/js-for-loops-test2.json';
+        const foo = `../data/js-${selectedOptionValue}.json`;
 
         //restart
-        this.gameController.startGame(foo)
-        //this.gameController.justLoadProblems(foo)
+        await this.gameController.justLoadProblems(foo);
         //this.restartGameUi();
+        this.gameController.restartGame();
     }
+    // this.gameController.startGame(foo)
 
 
     displayHeaderFields() {
@@ -117,21 +118,31 @@ export class UIManager {
         this.problemSetName.textContent = this.gameController.getProblemSetName();
     }
     displayDropdown() {
-        const opt1 = document.createElement('option');
-        opt1.textContent = "Options 1";
-        opt1.value = "value 1";
-        const opt2 = document.createElement('option');
-        opt2.textContent = "Options 2";
-        opt2.value = "value 2";
-        const opt3 = document.createElement('option');
-        opt3.textContent = "Options 3";
-        opt3.value = "value 3";
-        ///opt1.appendChild(this.problemSetDropdown);
-        this.problemSetDropdown.appendChild(opt1)
-        this.problemSetDropdown.appendChild(opt2)
-        this.problemSetDropdown.appendChild(opt3)
+        const problemSetDropdown = document.createElement('select');
+        problemSetDropdown.id = "problem-set-dp";
+        // this.problemSetDropdown = document.getElementById('problem-set-dp');
 
-        opt2.selected = true;
+        const opt1 = document.createElement('option');
+        opt1.textContent = "Filter Problems";
+        opt1.value = "filters";
+        const opt2 = document.createElement('option');
+        opt2.textContent = "For-loops Problems";
+        opt2.value = "for-loops";
+        const opt3 = document.createElement('option');
+        opt3.textContent = "Misc Problems";
+        opt3.value = "misc";
+        ///opt1.appendChild(this.problemSetDropdown);
+        problemSetDropdown.appendChild(opt1)
+        problemSetDropdown.appendChild(opt2)
+        problemSetDropdown.appendChild(opt3)
+
+        opt3.selected = true;
+
+
+        // Get the parent element
+        const parentElement = document.getElementById('change-problem-set-btn');
+        parentElement.insertAdjacentElement('afterend', problemSetDropdown);
+
 
     }
 
@@ -582,4 +593,4 @@ export class UIManager {
         }
     }
 }
-//562 - 478
+//562 - 478 - 585

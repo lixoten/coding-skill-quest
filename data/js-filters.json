@@ -1,133 +1,10 @@
 {
-  "name": "2024-5-25-17-37-15-JavaScript filter problems",
+  "name": "2024-5-25-19-16-22-JavaScript filter problems",
   "data": [
     {
       "prob_id": 1,
       "prob_type": 1,
-      "prob_name": "Just a word!!",
-      "prob_problem": "function justReturnTheWord(word) {\r    return word;\r\n}",
-      "prob_args": "Hi",
-      "prob_solution": "Hi",
-      "prob_resultType": "string",
-      "prob_instructions": [
-        "return the word"
-      ],
-      "prob_hints": [
-        "There is no need to know what the word is. just return it knucklehead"
-      ]
-    },
-    {
-      "prob_id": 2,
-      "prob_type": 2,
-      "prob_name": "CLI",
-      "prob_problem": "function xxxxx(xx) {\r    return xx;\r\n}",
-      "prob_args": "",
-      "prob_solution": "client line interface",
-      "prob_resultType": "word",
-      "prob_instructions": [
-        "What is CLI?"
-      ],
-      "prob_hints": [
-        "Text based..."
-      ]
-    },
-    {
-      "prob_id": 3,
-      "prob_type": 2,
-      "prob_name": "yellow red blue, blue red yellow",
-      "prob_problem": "function xxxxx(xx) {\r    return xx;\r\n}",
-      "prob_args": "",
-      "prob_solution": [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "violet",
-        "indigo"
-      ],
-      "prob_resultType": "wordInList",
-      "prob_instructions": [
-        "return the word in the string zfsdfsdf"
-      ],
-      "prob_hints": [
-        "There is ????"
-      ]
-    },
-    {
-      "prob_id": 4,
-      "prob_type": 1,
-      "prob_name": "Get the length",
-      "prob_problem": "function getLengthOfWords(words) {\r    const outArr = [];\r\n    for (const temp of words) {\r\n        outArr.push(temp.length);\r\n    }\r\n\r\n    return outArr;\r\n}",
-      "prob_args": [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "indigo",
-        "violet"
-      ],
-      "prob_solution": [
-        3,
-        6,
-        6,
-        5,
-        4,
-        6,
-        6
-      ],
-      "prob_resultType": "array",
-      "prob_instructions": [
-        "for...js-for-loops.jsonOf Loop - get length of each word. Return a number \"array\""
-      ],
-      "prob_hints": [
-        "Syntax: for (item of itemList {",
-        "The for...of loop is a more modern and concise way to iterate over the elements of an array. It's particularly useful when you don't need to know the index of the current element."
-      ]
-    },
-    {
-      "prob_id": 5,
-      "prob_type": 1,
-      "prob_name": "Add five",
-      "prob_problem": "function addFiveToNumbers(numbers) {\r    const outArr = [];\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        outArr.push(numbers[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
-      "prob_args": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "prob_solution": [
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "prob_resultType": "array",
-      "prob_instructions": [
-        "For Loop - add 5 to each number in the **numbers array**. Return an **array** with new values"
-      ],
-      "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {",
-        "The traditional for loop is useful when you know the exact number of iterations you need to perform. It's straightforward and easy to understand."
-      ]
-    },
-    {
-      "prob_id": 6,
-      "prob_type": 1,
-      "prob_name": "Sum of Numbers",
+      "prob_name": "filter----Sum of Numbers",
       "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        sum += numbers[i];\r\n    }\r\n    return sum;\r\n}",
       "prob_args": [
         1,
@@ -151,92 +28,7 @@
       ]
     },
     {
-      "prob_id": 7,
-      "prob_type": 1,
-      "prob_name": "Finding the Largest Number",
-      "prob_problem": "function findLargestNumber(numbers) {\r    let largest = numbers[0];\r\n    for (let i = 1; i < numbers.length; i++) {\r\n        if (numbers[i] > largest) {\r\n            largest = numbers[i];\r\n        }\r\n    }\r\n    return largest;\r\n}",
-      "prob_args": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "prob_solution": 10,
-      "prob_resultType": "number",
-      "prob_instructions": [
-        "Use For loop - Finds the largest number in an array of **numbers**.",
-        "return: The largest number in the array."
-      ],
-      "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
-      ]
-    },
-    {
-      "prob_id": 8,
-      "prob_type": 1,
-      "prob_name": "Counting Characters",
-      "prob_problem": "function countCharacters(string) {\r    let charCount = {};\r\n    for (let i = 0; i < string.length; i++) {\r\n        let char = string[i];\r\n        if (charCount[char]) {\r\n            charCount[char]++;\r\n        } else {\r\n            charCount[char] = 1;\r\n        }\r\n    }\r\n    return charCount;\r\n}",
-      "prob_args": "hello world",
-      "prob_solution": {
-        "h": 1,
-        "e": 1,
-        "l": 3,
-        "o": 2,
-        " ": 1,
-        "w": 1,
-        "r": 1,
-        "d": 1
-      },
-      "prob_resultType": "object",
-      "prob_instructions": [
-        "Counts the occurrences of each character in a given **string**.",
-        "return: An object where each key is a unique character found in the input string, and each value is the count of that character."
-      ],
-      "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
-      ]
-    },
-    {
-      "prob_id": 9,
-      "prob_type": 1,
-      "prob_name": "Change to Uppercase",
-      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    words.forEach(item => {\r\n        outArr.push(item.toUpperCase())\r\n    });\r\n\r\n    return outArr;\r\n}",
-      "prob_args": [
-        "red",
-        "orange",
-        "yellow",
-        "green",
-        "blue",
-        "indigo",
-        "violet"
-      ],
-      "prob_solution": [
-        "RED",
-        "ORANGE",
-        "YELLOW",
-        "GREEN",
-        "BLUE",
-        "INDIGO",
-        "VIOLET"
-      ],
-      "prob_resultType": "array",
-      "prob_instructions": [
-        "ForEach Loop - Converts all **words** in an array to uppercase.",
-        "return: An array of strings where all characters are converted to uppercase."
-      ],
-      "prob_hints": [
-        "Syntax: array.forEach(function(currentValue, index, arr), thisValue)",
-        "The forEach method is a higher-order function provided by JavaScript arrays. It executes a provided function once for each array element. It's a good choice when you want to perform an operation on each element of the array without needing to know the index."
-      ]
-    },
-    {
-      "prob_id": 10,
+      "prob_id": 2,
       "prob_type": 1,
       "prob_name": "Add 10 Map Method",
       "prob_problem": "function addTenToNumbers(numbers) {\r    return numbers.map(item => {\r\n        return item + 10;\r\n    })\r\n}",
@@ -277,7 +69,7 @@
       ]
     },
     {
-      "prob_id": 11,
+      "prob_id": 3,
       "prob_type": 1,
       "prob_name": "Filter \"top\"",
       "prob_problem": "function getTopWords(words) {\r    return words.filter(word => word.substring(0,3) === \"top\" );\r\n}",
@@ -319,7 +111,7 @@
       ]
     },
     {
-      "prob_id": 12,
+      "prob_id": 4,
       "prob_type": 1,
       "prob_name": "Get Filter Inventors",
       "prob_problem": "function getInventors(inventors) {\r    return inventors.filter(inventor => (inventor.year >= 1500 && inventor.year <= 1599));\r\n}",
@@ -422,7 +214,7 @@
       ]
     },
     {
-      "prob_id": 13,
+      "prob_id": 5,
       "prob_type": 1,
       "prob_name": "Get All Inventors Full names",
       "prob_problem": "function getInventorsFullname(inventors) {\r    return inventors.map((inventor) => `${inventor.first} ${inventor.last}`);\r\n}",
@@ -526,7 +318,7 @@
       ]
     },
     {
-      "prob_id": 14,
+      "prob_id": 6,
       "prob_type": 1,
       "prob_name": "Reduce Method",
       "prob_problem": "function reduceLoop(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal, 101);\r\n}",
@@ -555,7 +347,7 @@
       ]
     },
     {
-      "prob_id": 15,
+      "prob_id": 7,
       "prob_type": 1,
       "prob_name": "Get even",
       "prob_problem": "function getEvenNumbers(numbers) {\r    return numbers.filter((num) => num % 2 === 0);\r\n}",
@@ -588,7 +380,7 @@
       ]
     },
     {
-      "prob_id": 16,
+      "prob_id": 8,
       "prob_type": 1,
       "prob_name": "Triple Numbers",
       "prob_problem": "function tripleNumbers(numbers) {\r    return numbers.map((num) => num * 3);\r\n}",
@@ -626,7 +418,7 @@
       ]
     },
     {
-      "prob_id": 17,
+      "prob_id": 9,
       "prob_type": 1,
       "prob_name": "Sum Numbers",
       "prob_problem": "function sumNumbers(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal);\r\n\r\n}",
@@ -654,7 +446,7 @@
       ]
     },
     {
-      "prob_id": 18,
+      "prob_id": 10,
       "prob_type": 1,
       "prob_name": "Get Even-Triple-Sum Numbers",
       "prob_problem": "function sumOfTripledEvens(numbers) {\r    const evens = numbers.filter((num) => num % 2 === 0);\r\n    const trippled = evens.map((num) => num * 3);\r\n    const sum = trippled.reduce((acc, curVal) => acc + curVal);\r\n    return sum;\r\n}",
@@ -681,21 +473,6 @@
         "Syntax: array.filter(callback(element[, index[, array]])[, thisArg])",
         "Syntax: array.map(callback(currentValue[, index[, array]])[, thisArg])",
         "Syntax: array.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue]);\n            array.reduce((acc, curValue) => acc + num, 0);"
-      ]
-    },
-    {
-      "prob_id": 19,
-      "prob_type": 1,
-      "prob_name": "Hello World!",
-      "prob_problem": "function returnHelloWorld() {\r    return \"Hello World!\";\r\n}",
-      "prob_args": "",
-      "prob_solution": "Hello World!",
-      "prob_resultType": "string",
-      "prob_instructions": [
-        "Returns the string \"Hello World!\"."
-      ],
-      "prob_hints": [
-        "REALLLY? do you reallyy need a hint? WTH!!!!"
       ]
     }
   ]

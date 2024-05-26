@@ -66,13 +66,18 @@ export class GameController {
 
 
     justLoadProblems(file = this.DEFAULT_INITIAL_DATA_FILE) {
-        this.loader.loadProblemsFromFile(file)
-            .then(problems => {
-                this.currentProblemIndex = 0;
-                this.totalProblems = problems.length
-                //console.log(problems[this.currentProblemIndex]);
-                this.assignProblemToPlayer(problems[this.currentProblemIndex]);
-            });
+        return new Promise((resolve, reject) => {
+            this.loader.loadProblemsFromFile(file)
+                .then(problems => {
+                    this.currentProblemIndex = 0;
+                    this.totalProblems = problems.length;
+                    this.assignProblemToPlayer(problems[this.currentProblemIndex]);
+                    resolve(); // Resolve the promise
+                })
+                .catch(error => {
+                    reject(error); // Reject the promise if there's an error
+                });
+        });
     }
 
 
