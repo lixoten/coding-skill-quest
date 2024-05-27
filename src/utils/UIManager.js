@@ -293,7 +293,7 @@ export class UIManager {
         this.copyButton.classList.remove('show-copy')
 
         if (this.gameController.isGameOver()) {
-            this.updateDom('gameOver');
+            this.gameController.updateDom('gameOver');
         } else {
             this.gameController.nextProblem();
         }

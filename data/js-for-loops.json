@@ -1,5 +1,5 @@
 {
-  "name": "2024-5-26 16:10:53 JavaScript for loops",
+  "name": "2024-5-26 19:55:38 JavaScript for loops",
   "data": [
     {
       "prob_id": 1,
@@ -52,28 +52,32 @@
       "prob_name": "Add five",
       "prob_problem": "function addFiveToNumbers(numbers) {\r    const outArr = [];\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        outArr.push(numbers[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
       "prob_solution": [
-        6,
+        9,
+        15,
         7,
         8,
-        9,
+        49,
+        6,
         10,
-        11,
+        14,
         12,
         13,
-        14,
-        15
+        11,
+        6
       ],
       "prob_resultType": "array",
       "prob_instructions": [
@@ -91,18 +95,20 @@
       "prob_name": "Sum of Numbers",
       "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        sum += numbers[i];\r\n    }\r\n    return sum;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 55,
+      "prob_solution": 100,
       "prob_resultType": "number",
       "prob_instructions": [
         "Use traditional for-loop",
@@ -118,18 +124,20 @@
       "prob_name": "Finding the Largest Number",
       "prob_problem": "function findLargestNumber(numbers) {\r    let largest = numbers[0];\r\n    for (let i = 1; i < numbers.length; i++) {\r\n        if (numbers[i] > largest) {\r\n            largest = numbers[i];\r\n        }\r\n    }\r\n    return largest;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 10,
+      "prob_solution": 44,
       "prob_resultType": "number",
       "prob_instructions": [
         "Use traditional for-loop",
@@ -160,8 +168,7 @@
       "prob_instructions": [
         "Use traditional for-loop",
         "Counts the occurrences of each character in a given **string**.",
-        "return: An object where each key is a unique character found in the input string, and each value is the count of that character.",
-        "with for..off it gets even smaller"
+        "return: An object where each key is a unique character found in the input string, and each value is the count of that character."
       ],
       "prob_hints": [
         "Syntax: for (initialization; condition; iteration) {"
@@ -171,7 +178,7 @@
       "prob_id": 6,
       "prob_type": 1,
       "prob_name": "Change to Uppercase",
-      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (let i = 1; i < words.length; i++) {\r\n        outArr.push(words[i].toUpperCase())\r\n    };\r\n\r\n    return outArr;\r\n}",
+      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (let i = 0; i < words.length; i++) {\r\n        outArr.push(words[i].toUpperCase())\r\n    }\r\n\r\n    return outArr;\r\n}",
       "prob_args": [
         "red",
         "orange",
@@ -182,6 +189,7 @@
         "violet"
       ],
       "prob_solution": [
+        "RED",
         "ORANGE",
         "YELLOW",
         "GREEN",

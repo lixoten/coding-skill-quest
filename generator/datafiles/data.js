@@ -1,6 +1,6 @@
 const words     = ['toper', 'tophe', 'topqhs', 'tuesday', 'topis', 'toped', 'tree', 'topfes', 'tophi', 'tophilopu', 'dang' ,'togo', 'topic', 'topoi'];
 const colors    = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-const myNumbers= [1, 2, 3, 4, 5, 6, 7,8 ,9, 10];
+const myNumbers= [4, 10, 2, 3, 44, 1, 5, 9, 7,8 ,6, 1];
 const inventors = [
     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
     { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
