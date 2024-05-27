@@ -287,6 +287,12 @@ export class GameController {
     }
 
     endGame() {
+        //if (this.isGameOver()) {
+            this.uiManager.updateDom('gameOver');
+        //} else {
+        //    this.nextProblem();
+        //}
+
         //this.uiManager.reshowScore(this.player.getScore_Players());
         // Additional cleanup or end-game logic here
     }

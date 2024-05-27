@@ -1,11 +1,26 @@
+Bugs:
+----Change Display Current problem number? atm it's always "22)"
+
+Future
+--- Allow for multiple problem files to be loaded at once.
+-------New setup page where the user checks which files to use.
+----------on Save maybe it saves all the file names checked, then a for loop array can load them
+----Question Navigation prev-next buttons
+----Allow going back and doing skipped questions
+----Color Coding
+-------If Solved - show header in green
+-------If Skipped - show header in yellow  only after question-navigation is in place
+-------If Failed - show header in red - only after question-navigation is in place
+---Bonus Points - after a problem is solved. Present Bonus if available
+-------A bonus might be taking solved problem and Enhancing it
+-----------By enhancing we could:
+---------------Ask them to rewrite function but same outcome.... as in for loop sum, modified to use reduce, ot a for of loop
+-------------------For these we need to validate for keywords
+---------------Ask them to ADD to the function to take result and produce something else. result from filter solved then taken to reduce to sum
+-----------How: We could carry "// bonus-" instructions that are only shown after solved, if solve we can credit extra points
+
+
 Next-Step?
-Change app to use class instead of id=editor.
-
-typewth is for problem type... Why "WTH", to be easy to find n source
-
-
-typewth 1 | editor >>>> codemirror6
-typewth 2 | editorText >>>> is for regular text question / response
 
 
 ======================================================

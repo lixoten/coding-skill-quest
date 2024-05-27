@@ -91,7 +91,6 @@ fooArr[i] = function countCharacters(string) {
     // Use traditional for-loop
     // Counts the occurrences of each character in a given **string**.
     // return: An object where each key is a unique character found in the input string, and each value is the count of that character.
-    // with for...off it gets even smaller
     // hint-syntax:for
     // result-object
     let charCount = {};
@@ -115,7 +114,7 @@ fooArr[i] = function changeAllToUppercase(words) {
     // hint-syntax:for
     // result-array
     const outArr = []
-    for (let i = 1; i < words.length; i++) {
+    for (let i = 0; i < words.length; i++) {
         outArr.push(words[i].toUpperCase())
     }
 

@@ -1,5 +1,5 @@
 {
-  "name": "2024-5-26 16:11:16 JavaScript for..of loops",
+  "name": "2024-5-26 19:47:3 JavaScript for..of loops",
   "data": [
     {
       "prob_id": 1,
@@ -53,28 +53,32 @@
       "prob_name": "Add five",
       "prob_problem": "function addFiveToNumbers(numbers) {\r    const outArr = [];\r\n    for (const number of numbers) {\r\n        outArr.push(number + 5)\r\n    }\r\n    return outArr;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
       "prob_solution": [
-        6,
+        9,
+        15,
         7,
         8,
-        9,
+        49,
+        6,
         10,
-        11,
+        14,
         12,
         13,
-        14,
-        15
+        11,
+        6
       ],
       "prob_resultType": "array",
       "prob_instructions": [
@@ -92,18 +96,20 @@
       "prob_name": "Sum of Numbers",
       "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (const number of numbers) {\r\n        sum += number;\r\n    }\r\n    return sum;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 55,
+      "prob_solution": 100,
       "prob_resultType": "number",
       "prob_instructions": [
         "Use for...of loop",
@@ -119,18 +125,20 @@
       "prob_name": "Finding the Largest Number",
       "prob_problem": "function findLargestNumber(numbers) {\r    let largest = numbers[0];\r\n    for (const number of numbers) {\r\n        if (number > largest) {\r\n            largest = number;\r\n        }\r\n    }\r\n    return largest;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 10,
+      "prob_solution": 44,
       "prob_resultType": "number",
       "prob_instructions": [
         "Use for...of loop",
@@ -172,7 +180,7 @@
       "prob_id": 6,
       "prob_type": 1,
       "prob_name": "Change to Uppercase",
-      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (const word of words) {\r\n        outArr.push(word.toUpperCase())\r\n    };\r\n\r\n    return outArr;\r\n}",
+      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (const word of words) {\r\n        outArr.push(word.toUpperCase())\r\n    }\r\n\r\n    return outArr;\r\n}",
       "prob_args": [
         "red",
         "orange",

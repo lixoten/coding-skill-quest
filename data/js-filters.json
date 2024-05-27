@@ -1,27 +1,37 @@
 {
-  "name": "2024-5-25-19-16-22-JavaScript filter problems",
+  "name": "2024-5-26 20:15:56 JavaScript filter problems",
   "data": [
     {
       "prob_id": 1,
       "prob_type": 1,
-      "prob_name": "filter----Sum of Numbers",
-      "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        sum += numbers[i];\r\n    }\r\n    return sum;\r\n}",
+      "prob_name": "Filters.....................",
+      "prob_problem": "function sumOfNumbers(numbers) {\r    return numbers.filter((num) => num % 2 === 0);\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 55,
-      "prob_resultType": "number",
+      "prob_solution": [
+        4,
+        10,
+        2,
+        44,
+        8,
+        6
+      ],
+      "prob_resultType": "array",
       "prob_instructions": [
-        "For loop. Take the values in **numbers array** and add them up. Return sum result."
+        "Sum of Numbers",
+        "Take the values in **numbers array** and add them up. Return sum result."
       ],
       "prob_hints": [
         "Syntax: for (initialization; condition; iteration) {"
@@ -33,28 +43,32 @@
       "prob_name": "Add 10 Map Method",
       "prob_problem": "function addTenToNumbers(numbers) {\r    return numbers.map(item => {\r\n        return item + 10;\r\n    })\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
       "prob_solution": [
-        11,
+        14,
+        20,
         12,
         13,
-        14,
+        54,
+        11,
         15,
-        16,
+        19,
         17,
         18,
-        19,
-        20
+        16,
+        11
       ],
       "prob_resultType": "array",
       "prob_instructions": [
@@ -76,13 +90,15 @@
       "prob_args": [
         "toper",
         "tophe",
-        "tophs",
+        "topqhs",
         "tuesday",
         "topis",
         "toped",
         "tree",
-        "topes",
+        "topfes",
         "tophi",
+        "tophilopu",
+        "dang",
         "togo",
         "topic",
         "topoi"
@@ -90,11 +106,12 @@
       "prob_solution": [
         "toper",
         "tophe",
-        "tophs",
+        "topqhs",
         "topis",
         "toped",
-        "topes",
+        "topfes",
         "tophi",
+        "tophilopu",
         "topic",
         "topoi"
       ],
@@ -323,18 +340,20 @@
       "prob_name": "Reduce Method",
       "prob_problem": "function reduceLoop(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal, 101);\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 156,
+      "prob_solution": 201,
       "prob_resultType": "number",
       "prob_instructions": [
         "reduce Loop - sum all array **numbers**, but start with 101 in the bucket. return result",
@@ -352,23 +371,26 @@
       "prob_name": "Get even",
       "prob_problem": "function getEvenNumbers(numbers) {\r    return numbers.filter((num) => num % 2 === 0);\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
       "prob_solution": [
-        2,
         4,
-        6,
+        10,
+        2,
+        44,
         8,
-        10
+        6
       ],
       "prob_resultType": "array",
       "prob_instructions": [
@@ -385,28 +407,32 @@
       "prob_name": "Triple Numbers",
       "prob_problem": "function tripleNumbers(numbers) {\r    return numbers.map((num) => num * 3);\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
       "prob_solution": [
-        3,
+        12,
+        30,
         6,
         9,
-        12,
+        132,
+        3,
         15,
-        18,
+        27,
         21,
         24,
-        27,
-        30
+        18,
+        3
       ],
       "prob_resultType": "array",
       "prob_instructions": [
@@ -423,18 +449,20 @@
       "prob_name": "Sum Numbers",
       "prob_problem": "function sumNumbers(numbers) {\r    return numbers.reduce((acc, curVal) => acc + curVal);\r\n\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 55,
+      "prob_solution": 100,
       "prob_resultType": "number",
       "prob_instructions": [
         "Sums up all numbers in an array.",
@@ -451,18 +479,20 @@
       "prob_name": "Get Even-Triple-Sum Numbers",
       "prob_problem": "function sumOfTripledEvens(numbers) {\r    const evens = numbers.filter((num) => num % 2 === 0);\r\n    const trippled = evens.map((num) => num * 3);\r\n    const sum = trippled.reduce((acc, curVal) => acc + curVal);\r\n    return sum;\r\n}",
       "prob_args": [
-        1,
+        4,
+        10,
         2,
         3,
-        4,
+        44,
+        1,
         5,
-        6,
+        9,
         7,
         8,
-        9,
-        10
+        6,
+        1
       ],
-      "prob_solution": 90,
+      "prob_solution": 222,
       "prob_resultType": "number",
       "prob_instructions": [
         "Calculates the sum of all even numbers in an array, after tripling each of them.",
