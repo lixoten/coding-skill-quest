@@ -22,18 +22,52 @@ async function main() {
         fileName = await askQuestion('Please enter the file name: ');
     }
 
-    if (fileName === "forloops"){
-        DATASET_NAME = 'for-loops';
-    } else if (fileName === "filters"){
-        DATASET_NAME = 'filters';
-    } else if (fileName === "misc"){
-        DATASET_NAME = 'misc';
-    } else{
-        DATASET_NAME = 'for-loops';
-    }
+    // if (fileName === "forloops" ||
+    //     fileName === "forloop") {
+    //     DATASET_NAME = 'for-loops';
+    // } else if (fileName === "forof" || fileName === "for..of" || fileName === "for of"){
+    //     DATASET_NAME = 'for-of-loops';
+    // } else if (fileName === "filters" || fileName === "filter"){
+    //     DATASET_NAME = 'filters';
+    // } else if (fileName === "misc"){
+    //     DATASET_NAME = 'misc';
+    // } else if (fileName === "misc"){
+    //     DATASET_NAME = 'misc';
+    // } else if (fileName === "misc"){
+    //     DATASET_NAME = 'misc';
+    // } else{
+    //     //DATASET_NAME = 'for-loops';
+    //     DATASET_NAME = fileName;
+    // }
+    // @formatter:off
+    const fileNameMap = {
+        "forloops": "for-loops",
+        "forloop":  "for-loops",
 
-    const OUTPUT_JSON_FILE = "../generator/data/js-" + DATASET_NAME + ".json";
-    const INPUT_DATA_FILE = "input-" + DATASET_NAME + ".js";
+        "forof":    "for-of-loops",
+        "for...of":  "for-of-loops",
+        "for of":   "for-of-loops",
+
+        "forin":    "for-in-loops",
+        "for...in":  "for-in-loops",
+        "for in":   "for-in-loops",
+
+        "filters":  "filters",
+        "filter":   "filters",
+        "misc":     "misc"
+    };
+    // @formatter:on
+
+    DATASET_NAME = fileNameMap[fileName] || fileName;
+
+
+    //const OUTPUT_JSON_FILE = "../generator/data/js-" + DATASET_NAME + ".json";
+    const path = require('path');
+    //const OUTPUT_JSON_FILE = "js-" + DATASET_NAME + ".json";
+    const OUTPUT_JSON_FILE = path.join(__dirname, '..', 'data', `js-${DATASET_NAME}.json`);
+
+    //const INPUT_DATA_FILE = "input-" + DATASET_NAME + ".js";
+    const INPUT_DATA_FILE = path.join(__dirname, 'datafiles', `input-${DATASET_NAME}.js`);
 
     // ... rest of your code ...
 // const OUTPUT_JSON_FILE = "../data/js-" + DATASET_NAME + ".json";
@@ -43,28 +77,32 @@ async function main() {
 // const INPUT_DATA_FILE = DATASET_NAME + ".js";
 
     let sourceCode = ``;
-    const data = require('./datafiles/'+INPUT_DATA_FILE);
+    let data;
+    try {
+        data = require(INPUT_DATA_FILE);
+    } catch (error) {
+        console.error('Error:', error.message);
+        //throw new Error('Error: ' + error.message);
+        console.error('Failed to load data. Please check the file path and try again.');
+        //alert(error);
+        process.exit(1);
+    }
 
-    let formattedFuncs = data.fooArr.map((item, index) => {
+    let formattedFunction = data.fooArr.map((item, index) => {
         let formattedFunc = formatFunctionForJSON(item);
         sourceCode = formattedFunc;
         const fullFunction = extractFunctionBody(sourceCode)
         const comments = extractInstructionsAndHints(sourceCode, index);
-        //console.log(formattedFunc);
-        //console.log(fullFunction);
-        //console.log(comments);
-
-
 
         let solution;
         try {
             //if (comments.resultType === "wordInList") {
             if (comments.solutionList) {
-                let userCrap  = comments.solutionList;
+                let userCrap = comments.solutionList;
                 const temp = userCrap.replace(/\s+/g, ' ').trim();
                 if (comments.resultType === "word") {
                     solution = temp.toLowerCase();
-                } else { //word in lisr
+                } else { //word in list
                     const arr = temp.split(' ');
                     solution = arr.map(item => item.toLowerCase());
                 }
@@ -82,7 +120,6 @@ async function main() {
                     solution = eval(`(${formattedFunc})([...x])`);
                 }
             }
-
 
 
             //let x = [...data.argsArr[index]];
@@ -112,13 +149,14 @@ async function main() {
     }
 
     let date = new Date();
-    let myTimestamp = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+    let myTimestamp = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
     let outputData = {
-        name: myTimestamp + "-" + data.problemSetName,
-        data: formattedFuncs
+        name: myTimestamp + " " + data.problemSetName,
+        data: formattedFunction
     };
 
-    fs.writeFile(`./data/` + OUTPUT_JSON_FILE, JSON.stringify(outputData, "WTF", 2), (err) => {
+    //fs.writeFile(`data/` + OUTPUT_JSON_FILE, JSON.stringify(outputData, "WTF", 2), (err) => {
+    fs.writeFile(OUTPUT_JSON_FILE, JSON.stringify(outputData, null, 2), (err) => {
         if (err) {
             console.log("Danger danger will robinson!!!")
             throw err;
@@ -165,7 +203,7 @@ async function main() {
                 return;
             }
 
-            //console.log("dddddddddddddddddddddddddddd : " +idx)
+            //console.log("xxx " +idx)
 
             if (idx === 1) { // note-: We assume the line 1, is always the problem name
                 problemName = line.replace('//', '').trim();
@@ -181,12 +219,10 @@ async function main() {
                 questionType = parseInt(strippedLine);
                 foundQuestionType = true;
             } else if (line.trim().startsWith('// result-')) { // Check if the line starts with a comment for result
-                const strippedLine = line.replace('// result-', '').trim();
-                resultType = strippedLine;
+                resultType = line.replace('// result-', '').trim();
                 foundResultType = true;
             } else if (line.trim().startsWith('// solution-')) {
-                const strippedLine = line.replace('// solution-', '').trim();
-                solutionList = strippedLine;
+                solutionList = line.replace('// solution-', '').trim();
             } else if (line.trim().startsWith('//')) {
                 const strippedLine = line.replace('//', '').trim();
                 instructions.push(strippedLine);
@@ -195,13 +231,13 @@ async function main() {
 
         if (!foundQuestionType) console.error(`questionType is missing for ID: ${index}`)
         if (!foundResultType) console.error(`resultType is missing for ID: ${index}`)
-        // Return the extracted details, instructionnnnnnns, and hints
-        return { problemName,  instructions, hints, resultType, questionType, solutionList};
+        // Return the extracted details, instructions, and hints
+        return {problemName, instructions, hints, resultType, questionType, solutionList};
     }
 
     function getSyntax(term) {
 
-        let syntax = "";
+        let syntax;
         //let isFound = line.includes(term);
         switch (term) {
             case "for":
@@ -247,12 +283,12 @@ async function main() {
 
     function extractFunctionBody(sourceCode) {
         // Step 1: Remove comments from the source code
-        const cleanedSourceCode = sourceCode
+        return sourceCode
             .replace(/\/\*[\s\S]*?\*\//gm, '') // Remove /* */ comments
             .replace(/\/\/.*/gm, '') // Remove // comments
             .replace(/^\s*[\r\n]/m, ''); // Remove the first blank line
         // .replace(/^\s*[\r\n]/gm, ''); // Remove blank lines
-        return cleanedSourceCode;
+        //return cleanedSourceCode;
     }
 
     rl.close();

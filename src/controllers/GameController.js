@@ -50,7 +50,7 @@ export class GameController {
         this.DEFAULT_INITIAL_DATA_FILE = 'js-for-loops.json';
     }
 
-    restartGame() {
+    restartSession() {
         this.currentProblemIndex = 0;
         this.uiManager.clearAll();
         this.assignProblemToPlayer(this.loader.getProblems()[this.currentProblemIndex]);
@@ -81,19 +81,30 @@ export class GameController {
     }
 
 
-    startGame(file = this.DEFAULT_INITIAL_DATA_FILE) {
-        this.loader.loadProblemsFromFile(file)
-            .then(problems => {
-                this.currentProblemIndex = 0;
-                this.totalProblems = problems.length
-                //console.log(problems[this.currentProblemIndex]);
+    async startGame(file = this.DEFAULT_INITIAL_DATA_FILE) {
+        await this.justLoadProblems(file);
 
-                this.assignProblemToPlayer(problems[this.currentProblemIndex]);
-                this.uiManager.displayProblem(problems[this.currentProblemIndex], this.currentProblemIndex);
-                this.uiManager.displayHeaderFields(); // Display the total number of problems after they have been loaded
-                this.uiManager.displayDropdown(); // Display the total number of problems after they have been loaded
-                console.log(123);
-            });
+
+        //this.uiManager.displayProblem(problems[this.currentProblemIndex], this.currentProblemIndex);
+        this.uiManager.displayHeaderFields(); // Display the total number of problems after they have been loaded
+        this.uiManager.displayDropdown(); // Display the total number of problems after they have been loaded
+
+        this.uiManager.displayProblem(this.player.getCurrentProblem_Player(), this.currentProblemIndex);
+
+        console.log("StartGame");
+
+        // this.loader.loadProblemsFromFile(file)
+        //     .then(problems => {
+        //         this.currentProblemIndex = 0;
+        //         this.totalProblems = problems.length
+        //         //console.log(problems[this.currentProblemIndex]);
+        //
+        //         this.assignProblemToPlayer(problems[this.currentProblemIndex]);
+        //         this.uiManager.displayProblem(problems[this.currentProblemIndex], this.currentProblemIndex);
+        //         this.uiManager.displayHeaderFields(); // Display the total number of problems after they have been loaded
+        //         this.uiManager.displayDropdown(); // Display the total number of problems after they have been loaded
+        //         console.log(123);
+        //     });
     }
 
     assignProblemToPlayer(problem) {
@@ -192,7 +203,7 @@ export class GameController {
         if (!this.isValidScoreType(scoreType)) return;
 
         // This one is a bit Advanced for me
-        let xxxx = `incrementTotal${scoreType.charAt(0).toUpperCase() + scoreType.slice(1)}Count`;
+        //let xxxx = `incrementTotal${scoreType.charAt(0).toUpperCase() + scoreType.slice(1)}Count`;
         //this.player[`incrementTotal${scoreType.charAt(0).toUpperCase() + scoreType.slice(1)}Count`]();
         switch (scoreType) {
             case "solutionPeek":
@@ -260,11 +271,9 @@ export class GameController {
         // Step 1: Retrieve the current problem from the player
         const currentPlayerProblemObject = this.getCurrentProblemFromPlayer();
 
-// Step 2: Check the solution against the current problem
-        const isCorrect = currentPlayerProblemObject.checkSolution(userSolution);
-
-
-        return isCorrect;
+        // Step 2: Check the solution against the current problem
+        //return isCorrect;
+        return currentPlayerProblemObject.checkSolution(userSolution);
     }
 
     nextProblem() {

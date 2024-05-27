@@ -72,10 +72,20 @@ This project is a web-based application and does not require installation. Simpl
 
 ## Usage
 
-1. **Load a Problem Set**: Click the "Change Problem Set" button to load a new set of problems.
+1. **Dropdown - Change Problem Set**: Select any from problem sets, then click Apply button to load the selected problem set.
+~~1. **Load a Problem Set**: Click the "Change Problem Set" button to load a new set of problems.~~
 2. **Solve Problems**: Use the integrated CodeMirror editor to write your solution and click the "Run Script" button to execute it.
-3. **Check Your Solution**: Click the "Check" button to compare your solution with the expected solution.
-4. **View Hints and Solutions**: If you're stuck, click the "Show hint" button to get a hint. If you want to see the solution, click the "Show Solution" button.
+3. **Restart** - The restart buttons resets the current problem set, so you can start over
+4. **Reset Problem** - Reset code on editor area
+5. **Skip** - Skips the current problem and loads the next problem. Incurs Penalty.
+6. **Check**: Click the "Check" button to compare your solution with the expected solution. Incurs Penalty/Reward. 
+7. **Next**: Takes you to next question. Only displayed once the current problem has been solved.
+8. **Show Hint**: If you're stuck, click the "Show hint" button to get a hint. Incurs Penalty. Incurs Penalty.
+9. **Show Solution**: If you're reallllly stuck, click the "Show Solution" button to get the solution. Incurs Penalty.
+
+note: Once a problem is solved. It is ok to look at hints, and solutions. No penalties will be incurred.
+
+
 
 ## Contributing
 

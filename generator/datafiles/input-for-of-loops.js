@@ -4,30 +4,31 @@ let i = j;
 //-----------------------------------------------------------//
 //-----------------------------------------------------------//
 //-----------------------------------------------------------//
-const problemSetName = 'JavaScript for loops';
+const problemSetName = 'JavaScript for..of loops';
 
 
 
 argsArr[++i] = words;
 fooArr[i] = function getLengthOfWords(words) {
     // Get the length
-    // Use traditional for-loop
+    // Use for...of loop
     // Get length of each word. Return a number "array"
     // BUT, skip words that are 6 characters long.
     // And stop checking if you encounter the word "dang"
     // At end append 99 to that array
-    // hint-syntax:for
-    // hint-use break; continue;
+    // hint-syntax:for...of
+    // hint-use break; continue; push()
+    // hint-The for...of loop is a more modern and concise way to iterate over the elements of an array. It's particularly useful when you don't need to know the index of the current element.
     // result-array
     const outArr = [];
-    for (let i = 0; i < words.length; i++) {
-        if (words[i].length === 6) {
+    for (const word of words) {
+        if (word.length === 6) {
             continue;
         }
-        if (words[i] === "dang") {
+        if (word === "dang") {
             break;
         }
-        outArr.push(words[i].length);
+        outArr.push(word.length);
     }
 
     outArr.push(99);
@@ -38,14 +39,14 @@ fooArr[i] = function getLengthOfWords(words) {
 argsArr[++i] = myNumbers;
 fooArr[i] = function addFiveToNumbers(numbers) {
     // Add five
-    // Use traditional for-loop
+    // Use for...of loop
     // Add 5 to each number in the **numbers array**. Return an **array** with new values
-    // hint-syntax:for
-    // hint-The traditional for loop is useful when you know the exact number of iterations you need to perform. It's straightforward and easy to understand.
+    // hint-syntax:for...of
+    // use push()
     // result-array
     const outArr = [];
-    for (let i = 0; i < numbers.length; i++) {
-        outArr.push(numbers[i] + 5)
+    for (const number of numbers) {
+        outArr.push(number + 5)
     }
     return outArr;
 };
@@ -54,13 +55,13 @@ fooArr[i] = function addFiveToNumbers(numbers) {
 argsArr[++i] = myNumbers;
 fooArr[i] = function sumOfNumbers(numbers) {
     // Sum of Numbers
-    // Use traditional for-loop
+    // Use for...of loop
     // Take the values in **numbers array** and add them up. Return sum result.
-    // hint-syntax:for
+    // hint-syntax:for...of
     // result-number
     let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
+    for (const number of numbers) {
+        sum += number;
     }
     return sum;
 }
@@ -69,15 +70,15 @@ fooArr[i] = function sumOfNumbers(numbers) {
 argsArr[++i] = myNumbers;
 fooArr[i] = function findLargestNumber(numbers) {
     // Finding the Largest Number
-    // Use traditional for-loop
-    // Finds the largest number in an array of **numbers**.
+    // Use for...of loop
+    // Finds the largest number in the array of **numbers**.
     // return: The largest number in the array.
-    // hint-syntax:for
+    // hint-syntax:for..of
     // result-number
     let largest = numbers[0];
-    for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] > largest) {
-            largest = numbers[i];
+    for (const number of numbers) {
+        if (number > largest) {
+            largest = number;
         }
     }
     return largest;
@@ -88,15 +89,14 @@ fooArr[i] = function findLargestNumber(numbers) {
 argsArr[++i] = "hello world";
 fooArr[i] = function countCharacters(string) {
     // Counting Characters
-    // Use traditional for-loop
+    // Use for...of loop
     // Counts the occurrences of each character in a given **string**.
     // return: An object where each key is a unique character found in the input string, and each value is the count of that character.
-    // with for...off it gets even smaller
-    // hint-syntax:for
+    // with for..off it gets even smaller
+    // hint-syntax:for...of
     // result-object
     let charCount = {};
-    for (let i = 0; i < string.length; i++) {
-        let char = string[i];
+    for (const char of string) {
         if (charCount[char]) {
             charCount[char]++;
         } else {
@@ -106,21 +106,23 @@ fooArr[i] = function countCharacters(string) {
     return charCount;
 }
 
+
 argsArr[++i] = colors;
 fooArr[i] = function changeAllToUppercase(words) {
     // Change to Uppercase
-    // Use traditional for-loop
+    // Use for...of loop
     // Converts all **words** in an array to uppercase.
     // return: An array of strings where all characters are converted to uppercase.
-    // hint-syntax:for
+    // hint-syntax:for...of
     // result-array
     const outArr = []
-    for (let i = 1; i < words.length; i++) {
-        outArr.push(words[i].toUpperCase())
+    for (const word of words) {
+        outArr.push(word.toUpperCase())
     }
 
     return outArr;
 };
+
 
 
 console.log(`Total Problems: ${i}`);
