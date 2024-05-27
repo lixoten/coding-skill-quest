@@ -1,11 +1,11 @@
 {
-  "name": "2024-5-26 16:10:53 JavaScript for loops",
+  "name": "2024-5-26 16:11:16 JavaScript for..of loops",
   "data": [
     {
       "prob_id": 1,
       "prob_type": 1,
       "prob_name": "Get the length",
-      "prob_problem": "function getLengthOfWords(words) {\r    const outArr = [];\r\n    for (let i = 0; i < words.length; i++) {\r\n        if (words[i].length === 6) {\r\n            continue;\r\n        }\r\n        if (words[i] === \"dang\") {\r\n            break;\r\n        }\r\n        outArr.push(words[i].length);\r\n    }\r\n\r\n    outArr.push(99);\r\n    return outArr;\r\n}",
+      "prob_problem": "function getLengthOfWords(words) {\r    const outArr = [];\r\n    for (const word of words) {\r\n        if (word.length === 6) {\r\n            continue;\r\n        }\r\n        if (word === \"dang\") {\r\n            break;\r\n        }\r\n        outArr.push(word.length);\r\n    }\r\n\r\n    outArr.push(99);\r\n    return outArr;\r\n}",
       "prob_args": [
         "toper",
         "tophe",
@@ -35,22 +35,23 @@
       ],
       "prob_resultType": "array",
       "prob_instructions": [
-        "Use traditional for-loop",
+        "Use for...of loop",
         "Get length of each word. Return a number \"array\"",
         "BUT, skip words that are 6 characters long.",
         "And stop checking if you encounter the word \"dang\"",
         "At end append 99 to that array"
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {",
-        "use break; continue;"
+        "Syntax: for (item of itemList {",
+        "use break; continue; push()",
+        "The for...of loop is a more modern and concise way to iterate over the elements of an array. It's particularly useful when you don't need to know the index of the current element."
       ]
     },
     {
       "prob_id": 2,
       "prob_type": 1,
       "prob_name": "Add five",
-      "prob_problem": "function addFiveToNumbers(numbers) {\r    const outArr = [];\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        outArr.push(numbers[i] + 5)\r\n    }\r\n    return outArr;\r\n}",
+      "prob_problem": "function addFiveToNumbers(numbers) {\r    const outArr = [];\r\n    for (const number of numbers) {\r\n        outArr.push(number + 5)\r\n    }\r\n    return outArr;\r\n}",
       "prob_args": [
         1,
         2,
@@ -77,19 +78,19 @@
       ],
       "prob_resultType": "array",
       "prob_instructions": [
-        "Use traditional for-loop",
-        "Add 5 to each number in the **numbers array**. Return an **array** with new values"
+        "Use for...of loop",
+        "Add 5 to each number in the **numbers array**. Return an **array** with new values",
+        "use push()"
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {",
-        "The traditional for loop is useful when you know the exact number of iterations you need to perform. It's straightforward and easy to understand."
+        "Syntax: for (item of itemList {"
       ]
     },
     {
       "prob_id": 3,
       "prob_type": 1,
       "prob_name": "Sum of Numbers",
-      "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (let i = 0; i < numbers.length; i++) {\r\n        sum += numbers[i];\r\n    }\r\n    return sum;\r\n}",
+      "prob_problem": "function sumOfNumbers(numbers) {\r    let sum = 0;\r\n    for (const number of numbers) {\r\n        sum += number;\r\n    }\r\n    return sum;\r\n}",
       "prob_args": [
         1,
         2,
@@ -105,18 +106,18 @@
       "prob_solution": 55,
       "prob_resultType": "number",
       "prob_instructions": [
-        "Use traditional for-loop",
+        "Use for...of loop",
         "Take the values in **numbers array** and add them up. Return sum result."
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
+        "Syntax: for (item of itemList {"
       ]
     },
     {
       "prob_id": 4,
       "prob_type": 1,
       "prob_name": "Finding the Largest Number",
-      "prob_problem": "function findLargestNumber(numbers) {\r    let largest = numbers[0];\r\n    for (let i = 1; i < numbers.length; i++) {\r\n        if (numbers[i] > largest) {\r\n            largest = numbers[i];\r\n        }\r\n    }\r\n    return largest;\r\n}",
+      "prob_problem": "function findLargestNumber(numbers) {\r    let largest = numbers[0];\r\n    for (const number of numbers) {\r\n        if (number > largest) {\r\n            largest = number;\r\n        }\r\n    }\r\n    return largest;\r\n}",
       "prob_args": [
         1,
         2,
@@ -132,19 +133,19 @@
       "prob_solution": 10,
       "prob_resultType": "number",
       "prob_instructions": [
-        "Use traditional for-loop",
-        "Finds the largest number in an array of **numbers**.",
+        "Use for...of loop",
+        "Finds the largest number in the array of **numbers**.",
         "return: The largest number in the array."
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
+        "Syntax: Not found..."
       ]
     },
     {
       "prob_id": 5,
       "prob_type": 1,
       "prob_name": "Counting Characters",
-      "prob_problem": "function countCharacters(string) {\r    let charCount = {};\r\n    for (let i = 0; i < string.length; i++) {\r\n        let char = string[i];\r\n        if (charCount[char]) {\r\n            charCount[char]++;\r\n        } else {\r\n            charCount[char] = 1;\r\n        }\r\n    }\r\n    return charCount;\r\n}",
+      "prob_problem": "function countCharacters(string) {\r    let charCount = {};\r\n    for (const char of string) {\r\n        if (charCount[char]) {\r\n            charCount[char]++;\r\n        } else {\r\n            charCount[char] = 1;\r\n        }\r\n    }\r\n    return charCount;\r\n}",
       "prob_args": "hello world",
       "prob_solution": {
         "h": 1,
@@ -158,20 +159,20 @@
       },
       "prob_resultType": "object",
       "prob_instructions": [
-        "Use traditional for-loop",
+        "Use for...of loop",
         "Counts the occurrences of each character in a given **string**.",
         "return: An object where each key is a unique character found in the input string, and each value is the count of that character.",
         "with for..off it gets even smaller"
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
+        "Syntax: for (item of itemList {"
       ]
     },
     {
       "prob_id": 6,
       "prob_type": 1,
       "prob_name": "Change to Uppercase",
-      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (let i = 1; i < words.length; i++) {\r\n        outArr.push(words[i].toUpperCase())\r\n    };\r\n\r\n    return outArr;\r\n}",
+      "prob_problem": "function changeAllToUppercase(words) {\r    const outArr = []\r\n    for (const word of words) {\r\n        outArr.push(word.toUpperCase())\r\n    };\r\n\r\n    return outArr;\r\n}",
       "prob_args": [
         "red",
         "orange",
@@ -182,6 +183,7 @@
         "violet"
       ],
       "prob_solution": [
+        "RED",
         "ORANGE",
         "YELLOW",
         "GREEN",
@@ -191,12 +193,12 @@
       ],
       "prob_resultType": "array",
       "prob_instructions": [
-        "Use traditional for-loop",
+        "Use for...of loop",
         "Converts all **words** in an array to uppercase.",
         "return: An array of strings where all characters are converted to uppercase."
       ],
       "prob_hints": [
-        "Syntax: for (initialization; condition; iteration) {"
+        "Syntax: for (item of itemList {"
       ]
     }
   ]

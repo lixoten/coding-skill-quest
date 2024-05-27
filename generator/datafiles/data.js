@@ -1,4 +1,4 @@
-const words     = ['toper', 'tophe', 'tophs', 'tuesday', 'topis', 'toped', 'tree', 'topes', 'tophi', 'togo', 'topic', 'topoi'];
+const words     = ['toper', 'tophe', 'topqhs', 'tuesday', 'topis', 'toped', 'tree', 'topfes', 'tophi', 'tophilopu', 'dang' ,'togo', 'topic', 'topoi'];
 const colors    = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 const myNumbers= [1, 2, 3, 4, 5, 6, 7,8 ,9, 10];
 const inventors = [

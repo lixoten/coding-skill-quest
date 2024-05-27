@@ -105,9 +105,10 @@ export class UIManager {
         const foo = `../data/js-${selectedOptionValue}.json`;
 
         //restart
-        await this.gameController.justLoadProblems(foo);
+        //.await this.gameController.justLoadProblems(foo);
         //this.restartGameUi();
-        this.gameController.restartGame();
+        //this.gameController.restartSession();
+        await this.gameController.startGame(foo);
     }
     // this.gameController.startGame(foo)
 
@@ -118,30 +119,34 @@ export class UIManager {
         this.problemSetName.textContent = this.gameController.getProblemSetName();
     }
     displayDropdown() {
-        const problemSetDropdown = document.createElement('select');
-        problemSetDropdown.id = "problem-set-dp";
-        // this.problemSetDropdown = document.getElementById('problem-set-dp');
+        const element = document.getElementById('problem-set-dp');
+        if (!element) {
+            const problemSetDropdown = document.createElement('select');
+            problemSetDropdown.id = "problem-set-dp";
+            // this.problemSetDropdown = document.getElementById('problem-set-dp');
 
-        const opt1 = document.createElement('option');
-        opt1.textContent = "Filter Problems";
-        opt1.value = "filters";
-        const opt2 = document.createElement('option');
-        opt2.textContent = "For-loops Problems";
-        opt2.value = "for-loops";
-        const opt3 = document.createElement('option');
-        opt3.textContent = "Misc Problems";
-        opt3.value = "misc";
-        ///opt1.appendChild(this.problemSetDropdown);
-        problemSetDropdown.appendChild(opt1)
-        problemSetDropdown.appendChild(opt2)
-        problemSetDropdown.appendChild(opt3)
+            const options = [
+                { text: "Filter Problems", value: "filters" },
+                { text: "for-loops Problems", value: "for-loops" },
+                { text: "for...of loops Problems", value: "for-of-loops" },
+                { text: "for...in loops Problems", value: "for-in-loops" },
+                { text: "Misc Problems", value: "misc" }
+            ];
 
-        opt3.selected = true;
+            options.forEach((optItem) => {
+                const optElement = document.createElement('option');
+                optElement.textContent = optItem.text;
+                optElement.value = optItem.value;
+                if (optElement.value === "for-loops") optElement.selected = true
 
+                problemSetDropdown.appendChild(optElement)
+            })
 
-        // Get the parent element
-        const parentElement = document.getElementById('change-problem-set-btn');
-        parentElement.insertAdjacentElement('afterend', problemSetDropdown);
+            // Get the parent element
+            const parentElement = document.getElementById('change-problem-set-btn');
+            parentElement.insertAdjacentElement('afterend', problemSetDropdown);
+
+        }
 
 
     }
@@ -263,7 +268,7 @@ export class UIManager {
     };
 
     restartGameUi() {
-        console.log('restartGame method called');
+        console.log('restartGameUI method called');
         const main = document.getElementById('main-content')
         main.style.display = 'block';
 
@@ -271,7 +276,7 @@ export class UIManager {
         overlay.className = "";
         overlay.style.display = "none";
 
-        this.gameController.restartGame();
+        this.gameController.restartSession();
     }
 
     handleSkipButtonClick() {
@@ -368,8 +373,7 @@ export class UIManager {
         for (const item of trail) {
             const liElement = document.createElement('li');
             if (item === 'skip') {
-                let x = this.gameController.getPenaltySkippingPoints() + " Skipping "
-                liElement.textContent = x;
+                liElement.textContent = this.gameController.getPenaltySkippingPoints() + " Skipping "
             } else {
                  liElement.textContent = item;
             }
@@ -430,8 +434,8 @@ export class UIManager {
     }
 
     handleCheckButtonClick(typewth) {
-        let isExecutable = false;
-        let userSolution = "";
+        let isExecutable;
+        let userSolution;
 
         if (typewth === 2) {
             isExecutable = true;

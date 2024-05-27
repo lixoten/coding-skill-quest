@@ -1,15 +1,16 @@
 {
-  "name": "2024-5-25-19-17-7-JavaScript for misc",
+  "name": "2024-5-26 15:10:20 JavaScript for misc",
   "data": [
     {
       "prob_id": 1,
       "prob_type": 1,
-      "prob_name": "misc-----Just a word!!",
+      "prob_name": "Misc.....................",
       "prob_problem": "function justReturnTheWord(word) {\r    return word;\r\n}",
       "prob_args": "Hi",
       "prob_solution": "Hi",
       "prob_resultType": "string",
       "prob_instructions": [
+        "Just a word!!",
         "return the word"
       ],
       "prob_hints": [
